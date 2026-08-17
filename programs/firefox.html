@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Firefox — TechnoBkx</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f1115;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        header {
+            border-bottom: 1px solid #292d35;
+            padding: 20px 40px;
+            background: #151820;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #4da3ff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .program {
+            background: #171a21;
+            border: 1px solid #292d35;
+            border-radius: 18px;
+            padding: 35px;
+        }
+
+        .program-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            object-fit: cover;
+            background: #222631;
+        }
+
+        .program-name {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #aeb4c0;
+            font-size: 16px;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .info-box {
+            background: #11141a;
+            border: 1px solid #292d35;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .info-box small {
+            display: block;
+            color: #858c99;
+            margin-bottom: 7px;
+        }
+
+        .info-box strong {
+            font-size: 16px;
+        }
+
+        .download {
+            margin-top: 35px;
+            text-align: center;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 16px 35px;
+            background: #4da3ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .download-button:hover {
+            background: #2d8ff0;
+            transform: translateY(-2px);
+        }
+
+        .official {
+            margin-top: 15px;
+            color: #858c99;
+            font-size: 13px;
+        }
+
+        .hash {
+            margin-top: 30px;
+            background: #11141a;
+            border: 1px solid #292d35;
+            padding: 18px;
+            border-radius: 12px;
+        }
+
+        .hash-title {
+            color: #858c99;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .hash code {
+            word-break: break-all;
+            color: #cbd0d9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #686f7c;
+            font-size: 13px;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 18px 20px;
+            }
+
+            .container {
+                margin: 30px auto;
+            }
+
+            .program {
+                padding: 25px;
+            }
+
+            .program-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .program-name {
+                font-size: 28px;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        Techno<span>Bkx</span>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="program">
+
+        <div class="program-header">
+
+            <img
+                class="icon"
+                src="https://via.placeholder.com/100"
+                alt="Ikona programu"
+            >
+
+            <div>
+                <h1 class="program-name">Firefox</h1>
+
+                <p class="description">
+                    Szybka i prywatna przeglądarka internetowa.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="info">
+
+            <div class="info-box">
+                <small>Wersja</small>
+                <strong>142.0</strong>
+            </div>
+
+            <div class="info-box">
+                <small>Platforma</small>
+                <strong>Windows 64-bit</strong>
+            </div>
+
+            <div class="info-box">
+                <small>Typ pliku</small>
+                <strong>EXE</strong>
+            </div>
+
+        </div>
+
+        <div class="download">
+
+            <!-- Podmień URL na oficjalny link producenta -->
+            <a
+                class="download-button"
+                href="https://www.mozilla.org/firefox/new/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ⬇ Pobierz Firefox
+            </a>
+
+            <p class="official">
+                Pobieranie odbywa się z oficjalnego serwera producenta.
+            </p>
+
+        </div>
+
+        <div class="hash">
+
+            <div class="hash-title">
+                SHA-256
+            </div>
+
+            <code>
+                TU_WSTAW_SUMĘ_SHA256
+            </code>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    © 2026 TechnoBkx — Software & Downloads
+</footer>
+
+</body>
+</html>

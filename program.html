@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+
+```
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>TechnoBkx — Program</title>
+
+<meta
+    name="description"
+    content="TechnoBkx — informacje i pobieranie oprogramowania."
+>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --bg: #0b0d11;
+        --card: #151820;
+        --border: #282d38;
+        --text: #ffffff;
+        --muted: #969daa;
+        --accent: #4da3ff;
+        --success: #42d392;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+    }
+
+    header {
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        background: #11141a;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+        font-size: 25px;
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .logo span {
+        color: var(--accent);
+    }
+
+    nav {
+        display: flex;
+        gap: 25px;
+    }
+
+    nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    nav a:hover {
+        color: white;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 70px 20px;
+    }
+
+    .back {
+        display: inline-block;
+        margin-bottom: 30px;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .back:hover {
+        color: white;
+    }
+
+    .program {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 35px;
+    }
+
+    .program-header {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        margin-bottom: 30px;
+    }
+
+    .icon {
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #222631;
+        border-radius: 22px;
+        font-size: 52px;
+    }
+
+    .name {
+        font-size: 38px;
+        letter-spacing: -1px;
+        margin-bottom: 8px;
+    }
+
+    .version {
+        color: var(--muted);
+        font-size: 16px;
+    }
+
+    .description {
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    .info {
+        padding: 18px;
+        background: #11141a;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+    }
+
+    .info-label {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+
+    .info-value {
+        font-size: 15px;
+    }
+
+    .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 25px;
+        padding: 8px 12px;
+        border-radius: 20px;
+        background: rgba(66, 211, 146, 0.1);
+        border: 1px solid rgba(66, 211, 146, 0.25);
+        color: var(--success);
+        font-size: 13px;
+    }
+
+    .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 22px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        transition: 0.2s;
+    }
+
+    .download {
+        background: var(--accent);
+        color: white;
+    }
+
+    .download:hover {
+        filter: brightness(1.12);
+        transform: translateY(-2px);
+    }
+
+    .official {
+        background: #222631;
+        color: white;
+        border: 1px solid var(--border);
+    }
+
+    .official:hover {
+        background: #2a2f3b;
+    }
+
+    .loading {
+        text-align: center;
+        padding: 80px 20px;
+        color: var(--muted);
+    }
+
+    .spinner {
+        width: 38px;
+        height: 38px;
+        margin: 0 auto 15px;
+        border: 3px solid var(--border);
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .error {
+        display: none;
+        text-align: center;
+        padding: 80px 20px;
+        color: var(--muted);
+    }
+
+    .error h1 {
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    footer {
+        border-top: 1px solid var(--border);
+        text-align: center;
+        padding: 35px 20px;
+        color: #686f7c;
+        font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+
+        header {
+            padding: 0 20px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .container {
+            padding-top: 40px;
+        }
+
+        .program {
+            padding: 25px;
+        }
+
+        .program-header {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .name {
+            font-size: 30px;
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .actions {
+            flex-direction: column;
+        }
+
+        .button {
+            width: 100%;
+        }
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+
+```
+<div class="logo">
+    Techno<span>Bkx</span>
+</div>
+
+<nav>
+    <a href="index.html">Strona główna</a>
+    <a href="index.html#programy">Programy</a>
+    <a href="index.html#iso">ISO</a>
+</nav>
+```
+
+</header>
+
+<main class="container">
+
+```
+<a
+    href="index.html"
+    class="back"
+>
+    ← Wróć do katalogu
+</a>
+
+
+<div
+    id="loading"
+    class="loading"
+>
+
+    <div class="spinner"></div>
+
+    Ładowanie informacji...
+
+</div>
+
+
+<div
+    id="error"
+    class="error"
+>
+
+    <h1>
+        Nie znaleziono programu
+    </h1>
+
+    <p>
+        Sprawdź adres strony albo wpis w programs.json.
+    </p>
+
+</div>
+
+
+<article
+    id="program"
+    class="program"
+    style="display:none;"
+>
+
+    <div class="program-header">
+
+        <div
+            id="icon"
+            class="icon"
+        ></div>
+
+        <div>
+
+            <h1
+                id="name"
+                class="name"
+            ></h1>
+
+            <div
+                id="version"
+                class="version"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="description"
+        class="description"
+    ></div>
+
+
+    <div class="info-grid">
+
+        <div class="info">
+
+            <div class="info-label">
+                Platforma
+            </div>
+
+            <div
+                id="platform"
+                class="info-value"
+            ></div>
+
+        </div>
+
+
+        <div class="info">
+
+            <div class="info-label">
+                Kategorie
+            </div>
+
+            <div
+                id="categories"
+                class="info-value"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="status"
+        class="status"
+    >
+        ● Dane z TechnoBkx-Data
+    </div>
+
+
+    <div class="actions">
+
+        <a
+            id="download"
+            class="button download"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            ⬇ Pobierz
+        </a>
+
+
+        <a
+            id="official"
+            class="button official"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            🌐 Oficjalna strona
+        </a>
+
+    </div>
+
+</article>
+```
+
+</main>
+
+<footer>
+
+```
+© 2026 TechnoBkx — Software & Downloads
+```
+
+</footer>
+
+<script>
+
+    const DATA_URL =
+        "https://raw.githubusercontent.com/Tech-Karol/TechnoBkx-Data/main/programs.json";
+
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const requestedId =
+        params.get("id");
+
+
+    const loading =
+        document.getElementById("loading");
+
+
+    const error =
+        document.getElementById("error");
+
+
+    const programElement =
+        document.getElementById("program");
+
+
+    async function loadProgram() {
+
+        if (!requestedId) {
+
+            showError();
+
+            return;
+
+        }
+
+
+        try {
+
+            const response =
+                await fetch(
+                    DATA_URL +
+                    "?t=" +
+                    Date.now(),
+                    {
+                        cache: "no-store"
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "HTTP " + response.status
+                );
+
+            }
+
+
+            const data =
+                await response.json();
+
+
+            const program =
+                data.programs.find(
+                    item =>
+                        String(item.id)
+                            .toLowerCase() ===
+                        requestedId.toLowerCase()
+                );
+
+
+            if (!program) {
+
+                showError();
+
+                return;
+
+            }
+
+
+            renderProgram(program);
+
+        }
+
+        catch (err) {
+
+            console.error(err);
+
+            showError();
+
+        }
+
+    }
+
+
+    function renderProgram(program) {
+
+        document.title =
+            "TechnoBkx — " +
+            program.name;
+
+
+        document.getElementById("icon")
+            .textContent =
+            program.icon || "📦";
+
+
+        document.getElementById("name")
+            .textContent =
+            program.name;
+
+
+        document.getElementById("version")
+            .textContent =
+            program.version
+                ? "Wersja " + program.version
+                : "Wersja nieznana";
+
+
+        document.getElementById("description")
+            .textContent =
+            program.description ||
+            "Brak opisu.";
+
+
+        document.getElementById("platform")
+            .textContent =
+            program.platform ||
+            "Brak danych";
+
+
+        document.getElementById("categories")
+            .textContent =
+            Array.isArray(program.category)
+                ? program.category.join(" / ")
+                : "Brak kategorii";
+
+
+        const download =
+            document.getElementById("download");
+
+
+        const official =
+            document.getElementById("official");
+
+
+        if (program.download) {
+
+            download.href =
+                program.download;
+
+            download.style.display =
+                "inline-flex";
+
+        }
+
+        else {
+
+            download.style.display =
+                "none";
+
+        }
+
+
+        if (program.official) {
+
+            official.href =
+                program.official;
+
+            official.style.display =
+                "inline-flex";
+
+        }
+
+        else {
+
+            official.style.display =
+                "none";
+
+        }
+
+
+        const status =
+            document.getElementById("status");
+
+
+        if (program.autoUpdate) {
+
+            status.textContent =
+                "● Automatyczna aktualizacja danych";
+
+
+        } else {
+
+            status.textContent =
+                "● Oficjalne źródło pobierania";
+
+        }
+
+
+        loading.style.display =
+            "none";
+
+
+        programElement.style.display =
+            "block";
+
+    }
+
+
+    function showError() {
+
+        loading.style.display =
+            "none";
+
+        programElement.style.display =
+            "none";
+
+        error.style.display =
+            "block";
+
+    }
+
+
+    loadProgram();
+
+</script>
+
+</body>
+</html>

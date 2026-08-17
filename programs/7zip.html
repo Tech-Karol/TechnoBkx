@@ -64,7 +64,7 @@
             align-items: center;
             justify-content: center;
 
-            font-size: 42px;
+            font-size: 38px;
             font-weight: bold;
         }
 
@@ -97,20 +97,24 @@
             margin-bottom: 8px;
         }
 
-        .download-section {
-            text-align: center;
+        .downloads {
             margin-top: 40px;
+            text-align: center;
         }
 
         .download-button {
             display: inline-block;
             padding: 16px 32px;
+
             background: #4da3ff;
             color: white;
+
             text-decoration: none;
             border-radius: 10px;
+
             font-size: 17px;
             font-weight: bold;
+
             transition: 0.2s;
         }
 
@@ -123,6 +127,16 @@
             margin-top: 15px;
             color: #777e8b;
             font-size: 13px;
+        }
+
+        .status {
+            margin-top: 15px;
+            color: #777e8b;
+            font-size: 12px;
+        }
+
+        .error {
+            color: #ff7070;
         }
 
         footer {
@@ -201,8 +215,8 @@
                     Wersja
                 </small>
 
-                <strong>
-                    26.02
+                <strong id="version">
+                    Sprawdzanie...
                 </strong>
 
             </div>
@@ -236,18 +250,26 @@
         </div>
 
 
-        <div class="download-section">
+        <div class="downloads">
 
             <a
+                id="download"
                 class="download-button"
-                href="https://www.7-zip.org/a/7z2602-x64.exe"
+                href="#"
             >
-                ⬇ Pobierz 7-Zip 26.02
+                ⏳ Sprawdzanie wersji...
             </a>
 
             <p class="note">
-                Pobieranie odbywa się bezpośrednio z oficjalnego serwera 7-Zip.
+                Pobieranie odbywa się z oficjalnego wydania 7-Zip.
             </p>
+
+            <div
+                id="status"
+                class="status"
+            >
+                Łączenie z oficjalnym repozytorium 7-Zip...
+            </div>
 
         </div>
 
@@ -261,6 +283,215 @@
     © 2026 TechnoBkx
 
 </footer>
+
+
+<script>
+
+    /*
+     * Oficjalne repozytorium 7-Zip.
+     */
+
+    const API_URL =
+        "https://api.github.com/repos/ip7z/7zip/releases/latest";
+
+
+    /*
+     * Oficjalna strona 7-Zip.
+     */
+
+    const OFFICIAL_URL =
+        "https://www.7-zip.org/download.html";
+
+
+    async function load7Zip() {
+
+        const versionElement =
+            document.getElementById("version");
+
+        const downloadButton =
+            document.getElementById("download");
+
+        const statusElement =
+            document.getElementById("status");
+
+
+        try {
+
+            /*
+             * Pobieramy najnowszy release.
+             */
+
+            const response =
+                await fetch(
+                    API_URL,
+                    {
+                        cache: "no-store",
+                        headers: {
+                            "Accept":
+                                "application/vnd.github+json"
+                        }
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "GitHub API zwróciło błąd HTTP " +
+                    response.status
+                );
+
+            }
+
+
+            const release =
+                await response.json();
+
+
+            /*
+             * Tag wydania, np.:
+             *
+             * 26.02
+             */
+
+            let version =
+                release.tag_name;
+
+
+            /*
+             * Usuwamy ewentualne "v"
+             * z początku numeru wersji.
+             */
+
+            version =
+                version.replace(/^v/, "");
+
+
+            if (!version) {
+
+                throw new Error(
+                    "Nie znaleziono numeru wersji."
+                );
+
+            }
+
+
+            /*
+             * Szukamy oficjalnego instalatora
+             * Windows x64 wśród assetów release.
+             *
+             * Przykład:
+             *
+             * 7z2602-x64.exe
+             */
+
+            const asset =
+                release.assets.find(
+                    item =>
+                        /7z\d+-x64\.exe$/i.test(
+                            item.name
+                        )
+                );
+
+
+            if (!asset) {
+
+                throw new Error(
+                    "Nie znaleziono instalatora Windows x64."
+                );
+
+            }
+
+
+            /*
+             * Aktualna wersja.
+             */
+
+            versionElement.textContent =
+                version;
+
+
+            /*
+             * Oficjalny plik EXE.
+             */
+
+            downloadButton.href =
+                asset.browser_download_url;
+
+
+            downloadButton.target =
+                "_blank";
+
+
+            downloadButton.rel =
+                "noopener noreferrer";
+
+
+            downloadButton.textContent =
+                "⬇ Pobierz 7-Zip " +
+                version;
+
+
+            statusElement.textContent =
+                "Automatycznie sprawdzono najnowsze wydanie.";
+
+
+        } catch (error) {
+
+            console.error(
+                "TechnoBkx 7-Zip:",
+                error
+            );
+
+
+            /*
+             * Jeżeli API GitHuba nie odpowiada,
+             * nie kierujemy użytkownika
+             * do nieistniejącego pliku.
+             *
+             * Zamiast tego oficjalna strona 7-Zip.
+             */
+
+            versionElement.textContent =
+                "Sprawdź na stronie 7-Zip";
+
+
+            downloadButton.href =
+                OFFICIAL_URL;
+
+
+            downloadButton.target =
+                "_blank";
+
+
+            downloadButton.rel =
+                "noopener noreferrer";
+
+
+            downloadButton.textContent =
+                "🌐 Oficjalna strona 7-Zip";
+
+
+            statusElement.textContent =
+                "Automatyczne sprawdzanie niedostępne.";
+
+            statusElement.classList.add(
+                "error"
+            );
+
+        }
+
+    }
+
+
+    /*
+     * Uruchom przy każdym wejściu
+     * na stronę.
+     */
+
+    load7Zip();
+
+</script>
 
 </body>
 </html>

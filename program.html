@@ -1,482 +1,718 @@
 <!DOCTYPE html>
-
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
 
-```
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>TechnoBkx — Program</title>
+    <title>TechnoBkx — Program</title>
 
-<meta
-    name="description"
-    content="TechnoBkx — informacje i pobieranie oprogramowania."
->
+    <meta
+        name="description"
+        content="TechnoBkx — informacje i pobieranie oprogramowania."
+    >
 
-<style>
+    <style>
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    :root {
-        --bg: #0b0d11;
-        --card: #151820;
-        --border: #282d38;
-        --text: #ffffff;
-        --muted: #969daa;
-        --accent: #4da3ff;
-        --success: #42d392;
-    }
-
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        min-height: 100vh;
-    }
-
-    header {
-        height: 72px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 40px;
-        background: #11141a;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .logo {
-        font-size: 25px;
-        font-weight: 800;
-        letter-spacing: -1px;
-    }
-
-    .logo span {
-        color: var(--accent);
-    }
-
-    nav {
-        display: flex;
-        gap: 25px;
-    }
-
-    nav a {
-        color: var(--muted);
-        text-decoration: none;
-        font-size: 14px;
-    }
-
-    nav a:hover {
-        color: white;
-    }
-
-    .container {
-        max-width: 900px;
-        margin: auto;
-        padding: 70px 20px;
-    }
-
-    .back {
-        display: inline-block;
-        margin-bottom: 30px;
-        color: var(--muted);
-        text-decoration: none;
-        font-size: 14px;
-    }
-
-    .back:hover {
-        color: white;
-    }
-
-    .program {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 35px;
-    }
-
-    .program-header {
-        display: flex;
-        align-items: center;
-        gap: 25px;
-        margin-bottom: 30px;
-    }
-
-    .icon {
-        width: 100px;
-        height: 100px;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #222631;
-        border-radius: 22px;
-        font-size: 52px;
-    }
-
-    .name {
-        font-size: 38px;
-        letter-spacing: -1px;
-        margin-bottom: 8px;
-    }
-
-    .version {
-        color: var(--muted);
-        font-size: 16px;
-    }
-
-    .description {
-        color: var(--muted);
-        font-size: 17px;
-        line-height: 1.7;
-        margin-bottom: 30px;
-    }
-
-    .info-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        margin-bottom: 30px;
-    }
-
-    .info {
-        padding: 18px;
-        background: #11141a;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-    }
-
-    .info-label {
-        color: var(--muted);
-        font-size: 12px;
-        margin-bottom: 6px;
-    }
-
-    .info-value {
-        font-size: 15px;
-    }
-
-    .status {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        margin-bottom: 25px;
-        padding: 8px 12px;
-        border-radius: 20px;
-        background: rgba(66, 211, 146, 0.1);
-        border: 1px solid rgba(66, 211, 146, 0.25);
-        color: var(--success);
-        font-size: 13px;
-    }
-
-    .actions {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-    }
-
-    .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 14px 22px;
-        border-radius: 10px;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 14px;
-        transition: 0.2s;
-    }
-
-    .download {
-        background: var(--accent);
-        color: white;
-    }
-
-    .download:hover {
-        filter: brightness(1.12);
-        transform: translateY(-2px);
-    }
-
-    .official {
-        background: #222631;
-        color: white;
-        border: 1px solid var(--border);
-    }
-
-    .official:hover {
-        background: #2a2f3b;
-    }
-
-    .loading {
-        text-align: center;
-        padding: 80px 20px;
-        color: var(--muted);
-    }
-
-    .spinner {
-        width: 38px;
-        height: 38px;
-        margin: 0 auto 15px;
-        border: 3px solid var(--border);
-        border-top-color: var(--accent);
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-        to {
-            transform: rotate(360deg);
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-    }
 
-    .error {
-        display: none;
-        text-align: center;
-        padding: 80px 20px;
-        color: var(--muted);
-    }
+        :root {
+            --bg: #0b0d11;
+            --card: #151820;
+            --card-hover: #1b1f29;
+            --border: #282d38;
+            --text: #ffffff;
+            --muted: #969daa;
+            --accent: #4da3ff;
+            --success: #42d392;
+            --danger: #ff5c5c;
+        }
 
-    .error h1 {
-        color: white;
-        margin-bottom: 10px;
-    }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
 
-    footer {
-        border-top: 1px solid var(--border);
-        text-align: center;
-        padding: 35px 20px;
-        color: #686f7c;
-        font-size: 13px;
-    }
-
-    @media (max-width: 700px) {
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
-            padding: 0 20px;
+            height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 40px;
+
+            background: #11141a;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--accent);
         }
 
         nav {
-            display: none;
+            display: flex;
+            gap: 25px;
         }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================= */
 
         .container {
-            padding-top: 40px;
+            max-width: 900px;
+            margin: auto;
+
+            padding: 70px 20px;
         }
 
+        /* =========================
+           BACK
+        ========================= */
+
+        .back {
+            display: inline-block;
+
+            margin-bottom: 30px;
+
+            color: var(--muted);
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        .back:hover {
+            color: white;
+        }
+
+        /* =========================
+           PROGRAM
+        ========================= */
+
         .program {
-            padding: 25px;
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
+            padding: 35px;
         }
 
         .program-header {
-            align-items: flex-start;
-            flex-direction: column;
+            display: flex;
+            align-items: center;
+
+            gap: 25px;
+
+            margin-bottom: 30px;
         }
+
+        /* =========================
+           ICON
+        ========================= */
+
+        .icon {
+            width: 100px;
+            height: 100px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #222631;
+
+            border-radius: 22px;
+
+            font-size: 52px;
+        }
+
+        /* =========================
+           NAME
+        ========================= */
 
         .name {
-            font-size: 30px;
+            font-size: 38px;
+
+            letter-spacing: -1px;
+
+            margin-bottom: 8px;
         }
+
+        .version {
+            color: var(--muted);
+
+            font-size: 16px;
+        }
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        .description {
+            color: var(--muted);
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           INFO
+        ========================= */
 
         .info-grid {
-            grid-template-columns: 1fr;
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 30px;
         }
 
+        .info {
+            padding: 18px;
+
+            background: #11141a;
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+        }
+
+        .info-label {
+            color: var(--muted);
+
+            font-size: 12px;
+
+            margin-bottom: 6px;
+        }
+
+        .info-value {
+            font-size: 15px;
+
+            word-break: break-word;
+        }
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            margin-bottom: 25px;
+
+            padding: 8px 12px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(66, 211, 146, 0.1);
+
+            border:
+                1px solid
+                rgba(66, 211, 146, 0.25);
+
+            color: var(--success);
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           ACTIONS
+        ========================= */
+
         .actions {
-            flex-direction: column;
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
         }
 
         .button {
-            width: 100%;
-        }
-    }
+            display: inline-flex;
 
-</style>
-```
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 22px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        .download {
+            background: var(--accent);
+
+            color: white;
+        }
+
+        .download:hover {
+            filter: brightness(1.12);
+
+            transform:
+                translateY(-2px);
+        }
+
+        .official {
+            background: #222631;
+
+            color: white;
+
+            border:
+                1px solid
+                var(--border);
+        }
+
+        .official:hover {
+            background: #2a2f3b;
+        }
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .loading {
+            text-align: center;
+
+            padding: 80px 20px;
+
+            color: var(--muted);
+        }
+
+        .spinner {
+            width: 38px;
+            height: 38px;
+
+            margin:
+                0 auto 15px;
+
+            border:
+                3px solid
+                var(--border);
+
+            border-top-color:
+                var(--accent);
+
+            border-radius: 50%;
+
+            animation:
+                spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+
+        }
+
+        /* =========================
+           ERROR
+        ========================= */
+
+        .error {
+            display: none;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+            color: var(--muted);
+        }
+
+        .error h1 {
+            color: white;
+
+            margin-bottom: 10px;
+        }
+
+        .error-details {
+            margin-top: 15px;
+
+            color: var(--danger);
+
+            font-size: 13px;
+
+            word-break: break-word;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top:
+                1px solid
+                var(--border);
+
+            text-align: center;
+
+            padding: 35px 20px;
+
+            color: #686f7c;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .container {
+                padding-top: 40px;
+            }
+
+            .program {
+                padding: 25px;
+            }
+
+            .program-header {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .name {
+                font-size: 30px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
 
 </head>
 
 <body>
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
-```
-<div class="logo">
-    Techno<span>Bkx</span>
-</div>
+    <div class="logo">
+        Techno<span>Bkx</span>
+    </div>
 
-<nav>
-    <a href="index.html">Strona główna</a>
-    <a href="index.html#programy">Programy</a>
-    <a href="index.html#iso">ISO</a>
-</nav>
-```
+    <nav>
+
+        <a href="index.html">
+            Strona główna
+        </a>
+
+        <a href="index.html#programy">
+            Programy
+        </a>
+
+        <a href="index.html#iso">
+            ISO
+        </a>
+
+    </nav>
 
 </header>
 
+
+<!-- =========================
+     MAIN
+========================= -->
+
 <main class="container">
 
-```
-<a
-    href="index.html"
-    class="back"
->
-    ← Wróć do katalogu
-</a>
+    <a
+        href="index.html"
+        class="back"
+    >
+        ← Wróć do katalogu
+    </a>
 
 
-<div
-    id="loading"
-    class="loading"
->
+    <!-- LOADING -->
 
-    <div class="spinner"></div>
+    <div
+        id="loading"
+        class="loading"
+    >
 
-    Ładowanie informacji...
+        <div class="spinner"></div>
 
-</div>
+        Ładowanie informacji...
 
-
-<div
-    id="error"
-    class="error"
->
-
-    <h1>
-        Nie znaleziono programu
-    </h1>
-
-    <p>
-        Sprawdź adres strony albo wpis w programs.json.
-    </p>
-
-</div>
+    </div>
 
 
-<article
-    id="program"
-    class="program"
-    style="display:none;"
->
+    <!-- ERROR -->
 
-    <div class="program-header">
+    <div
+        id="error"
+        class="error"
+    >
+
+        <h1>
+            Nie znaleziono programu
+        </h1>
+
+        <p>
+            Sprawdź adres strony albo wpis
+            w programs.json.
+        </p>
 
         <div
-            id="icon"
-            class="icon"
+            id="errorDetails"
+            class="error-details"
         ></div>
 
-        <div>
-
-            <h1
-                id="name"
-                class="name"
-            ></h1>
-
-            <div
-                id="version"
-                class="version"
-            ></div>
-
-        </div>
-
     </div>
 
 
-    <div
-        id="description"
-        class="description"
-    ></div>
+    <!-- PROGRAM -->
 
-
-    <div class="info-grid">
-
-        <div class="info">
-
-            <div class="info-label">
-                Platforma
-            </div>
-
-            <div
-                id="platform"
-                class="info-value"
-            ></div>
-
-        </div>
-
-
-        <div class="info">
-
-            <div class="info-label">
-                Kategorie
-            </div>
-
-            <div
-                id="categories"
-                class="info-value"
-            ></div>
-
-        </div>
-
-    </div>
-
-
-    <div
-        id="status"
-        class="status"
+    <article
+        id="program"
+        class="program"
+        style="display:none;"
     >
-        ● Dane z TechnoBkx-Data
-    </div>
+
+        <!-- PROGRAM HEADER -->
+
+        <div class="program-header">
+
+            <div
+                id="icon"
+                class="icon"
+            ></div>
+
+            <div>
+
+                <h1
+                    id="name"
+                    class="name"
+                ></h1>
+
+                <div
+                    id="version"
+                    class="version"
+                ></div>
+
+            </div>
+
+        </div>
 
 
-    <div class="actions">
+        <!-- DESCRIPTION -->
 
-        <a
-            id="download"
-            class="button download"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
+        <div
+            id="description"
+            class="description"
+        ></div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="info-grid">
+
+            <div class="info">
+
+                <div class="info-label">
+                    Platforma
+                </div>
+
+                <div
+                    id="platform"
+                    class="info-value"
+                >
+                </div>
+
+            </div>
+
+
+            <div class="info">
+
+                <div class="info-label">
+                    Kategorie
+                </div>
+
+                <div
+                    id="categories"
+                    class="info-value"
+                >
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div
+            id="status"
+            class="status"
         >
-            ⬇ Pobierz
-        </a>
+            ● Dane z TechnoBkx-Data
+        </div>
 
 
-        <a
-            id="official"
-            class="button official"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            🌐 Oficjalna strona
-        </a>
+        <!-- BUTTONS -->
 
-    </div>
+        <div class="actions">
 
-</article>
-```
+            <a
+                id="download"
+                class="button download"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ⬇ Pobierz
+            </a>
+
+
+            <a
+                id="official"
+                class="button official"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                🌐 Oficjalna strona
+            </a>
+
+        </div>
+
+    </article>
 
 </main>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-```
-© 2026 TechnoBkx — Software & Downloads
-```
+    © 2026 TechnoBkx — Software & Downloads
 
 </footer>
 
+
 <script>
+
+    /*
+     * =====================================================
+     * TECHNOBKX DATA
+     * =====================================================
+     *
+     * Wszystkie programy są pobierane z jednego repozytorium.
+     *
+     * Repo:
+     *
+     * Tech-Karol/TechnoBkx-Data
+     *
+     * Plik:
+     *
+     * programs.json
+     *
+     * =====================================================
+     */
 
     const DATA_URL =
         "https://raw.githubusercontent.com/Tech-Karol/TechnoBkx-Data/main/programs.json";
 
+
+    /*
+     * =====================================================
+     * ODCZYT ID
+     * =====================================================
+     *
+     * Przykłady:
+     *
+     * program.html?id=firefox
+     * program.html?id=7zip
+     * program.html?id=vlc
+     * program.html?id=gimp
+     * program.html?id=ubuntu
+     * program.html?id=solaris
+     *
+     * =====================================================
+     */
 
     const params =
         new URLSearchParams(
@@ -488,23 +724,53 @@
         params.get("id");
 
 
+    /*
+     * =====================================================
+     * ELEMENTY
+     * =====================================================
+     */
+
     const loading =
-        document.getElementById("loading");
+        document.getElementById(
+            "loading"
+        );
 
 
     const error =
-        document.getElementById("error");
+        document.getElementById(
+            "error"
+        );
+
+
+    const errorDetails =
+        document.getElementById(
+            "errorDetails"
+        );
 
 
     const programElement =
-        document.getElementById("program");
+        document.getElementById(
+            "program"
+        );
 
+
+    /*
+     * =====================================================
+     * POBIERANIE PROGRAMS.JSON
+     * =====================================================
+     */
 
     async function loadProgram() {
 
+        /*
+         * Brak ID
+         */
+
         if (!requestedId) {
 
-            showError();
+            showError(
+                "Brak parametru ?id=."
+            );
 
             return;
 
@@ -512,6 +778,11 @@
 
 
         try {
+
+            /*
+             * Dodanie timestampu
+             * zapobiega staremu cache.
+             */
 
             const response =
                 await fetch(
@@ -524,104 +795,288 @@
                 );
 
 
+            /*
+             * Sprawdzenie HTTP
+             */
+
             if (!response.ok) {
 
                 throw new Error(
-                    "HTTP " + response.status
+                    "HTTP " +
+                    response.status +
+                    " — nie udało się pobrać programs.json."
                 );
 
             }
 
 
+            /*
+             * JSON
+             */
+
             const data =
                 await response.json();
 
 
+            /*
+             * =================================================
+             * OBSŁUGA DWÓCH FORMATÓW JSON
+             * =================================================
+             *
+             * FORMAT 1:
+             *
+             * [
+             *     {...},
+             *     {...}
+             * ]
+             *
+             *
+             * FORMAT 2:
+             *
+             * {
+             *     "programs": [
+             *         {...},
+             *         {...}
+             *     ]
+             * }
+             *
+             * =================================================
+             */
+
+            const programs =
+                Array.isArray(data)
+                    ? data
+                    : Array.isArray(
+                        data.programs
+                    )
+                        ? data.programs
+                        : null;
+
+
+            /*
+             * Nieprawidłowy JSON
+             */
+
+            if (!programs) {
+
+                throw new Error(
+                    "Nieprawidłowa struktura programs.json."
+                );
+
+            }
+
+
+            /*
+             * =================================================
+             * SZUKANIE PROGRAMU
+             * =================================================
+             */
+
             const program =
-                data.programs.find(
-                    item =>
-                        String(item.id)
-                            .toLowerCase() ===
-                        requestedId.toLowerCase()
+                programs.find(
+                    item => {
+
+                        if (!item) {
+                            return false;
+                        }
+
+                        if (!item.id) {
+                            return false;
+                        }
+
+                        return String(
+                            item.id
+                        )
+                            .toLowerCase()
+                            .trim()
+                            ===
+                            String(
+                                requestedId
+                            )
+                                .toLowerCase()
+                                .trim();
+
+                    }
                 );
 
 
+            /*
+             * Nie znaleziono
+             */
+
             if (!program) {
 
-                showError();
+                showError(
+                    'Nie znaleziono programu o ID "' +
+                    requestedId +
+                    '".'
+                );
 
                 return;
 
             }
 
 
-            renderProgram(program);
+            /*
+             * Wyświetlenie
+             */
+
+            renderProgram(
+                program
+            );
 
         }
 
         catch (err) {
 
-            console.error(err);
+            console.error(
+                "TechnoBkx:",
+                err
+            );
 
-            showError();
+
+            showError(
+                err.message ||
+                "Wystąpił nieznany błąd."
+            );
 
         }
 
     }
 
 
+    /*
+     * =====================================================
+     * RENDER PROGRAM
+     * =====================================================
+     */
+
     function renderProgram(program) {
+
+        /*
+         * TITLE
+         */
 
         document.title =
             "TechnoBkx — " +
-            program.name;
+            (
+                program.name ||
+                "Program"
+            );
 
 
-        document.getElementById("icon")
-            .textContent =
-            program.icon || "📦";
+        /*
+         * ICON
+         */
+
+        document.getElementById(
+            "icon"
+        ).textContent =
+            program.icon ||
+            "📦";
 
 
-        document.getElementById("name")
-            .textContent =
-            program.name;
+        /*
+         * NAME
+         */
+
+        document.getElementById(
+            "name"
+        ).textContent =
+            program.name ||
+            "Nieznany program";
 
 
-        document.getElementById("version")
-            .textContent =
+        /*
+         * VERSION
+         */
+
+        document.getElementById(
+            "version"
+        ).textContent =
             program.version
-                ? "Wersja " + program.version
+                ? "Wersja " +
+                  program.version
                 : "Wersja nieznana";
 
 
-        document.getElementById("description")
-            .textContent =
+        /*
+         * DESCRIPTION
+         */
+
+        document.getElementById(
+            "description"
+        ).textContent =
             program.description ||
             "Brak opisu.";
 
 
-        document.getElementById("platform")
-            .textContent =
+        /*
+         * PLATFORM
+         */
+
+        document.getElementById(
+            "platform"
+        ).textContent =
             program.platform ||
             "Brak danych";
 
 
-        document.getElementById("categories")
-            .textContent =
-            Array.isArray(program.category)
-                ? program.category.join(" / ")
-                : "Brak kategorii";
+        /*
+         * CATEGORY
+         */
 
+        let categories =
+            "Brak kategorii";
+
+
+        if (
+            Array.isArray(
+                program.category
+            )
+        ) {
+
+            categories =
+                program.category.join(
+                    " / "
+                );
+
+        }
+
+        else if (
+            typeof program.category ===
+            "string"
+        ) {
+
+            categories =
+                program.category;
+
+        }
+
+
+        document.getElementById(
+            "categories"
+        ).textContent =
+            categories;
+
+
+        /*
+         * =================================================
+         * DOWNLOAD
+         * =================================================
+         */
 
         const download =
-            document.getElementById("download");
+            document.getElementById(
+                "download"
+            );
 
 
-        const official =
-            document.getElementById("official");
-
-
-        if (program.download) {
+        if (
+            program.download &&
+            typeof program.download ===
+            "string"
+        ) {
 
             download.href =
                 program.download;
@@ -639,7 +1094,23 @@
         }
 
 
-        if (program.official) {
+        /*
+         * =================================================
+         * OFFICIAL
+         * =================================================
+         */
+
+        const official =
+            document.getElementById(
+                "official"
+            );
+
+
+        if (
+            program.official &&
+            typeof program.official ===
+            "string"
+        ) {
 
             official.href =
                 program.official;
@@ -657,25 +1128,46 @@
         }
 
 
+        /*
+         * =================================================
+         * STATUS
+         * =================================================
+         */
+
         const status =
-            document.getElementById("status");
+            document.getElementById(
+                "status"
+            );
 
 
-        if (program.autoUpdate) {
-
-            status.textContent =
-                "● Automatyczna aktualizacja danych";
-
-
-        } else {
+        if (
+            program.autoUpdate === true
+        ) {
 
             status.textContent =
-                "● Oficjalne źródło pobierania";
+                "● Automatycznie aktualizowane dane";
+
+        }
+
+        else {
+
+            status.textContent =
+                "● Dane z TechnoBkx-Data";
 
         }
 
 
+        /*
+         * =================================================
+         * POKAZANIE STRONY
+         * =================================================
+         */
+
         loading.style.display =
+            "none";
+
+
+        error.style.display =
             "none";
 
 
@@ -685,19 +1177,39 @@
     }
 
 
-    function showError() {
+    /*
+     * =====================================================
+     * ERROR
+     * =====================================================
+     */
+
+    function showError(
+        message
+    ) {
 
         loading.style.display =
             "none";
 
+
         programElement.style.display =
             "none";
+
 
         error.style.display =
             "block";
 
+
+        errorDetails.textContent =
+            message;
+
     }
 
+
+    /*
+     * =====================================================
+     * START
+     * =====================================================
+     */
 
     loadProgram();
 

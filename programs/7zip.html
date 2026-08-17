@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>7-Zip — TechnoBkx</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0d11;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 20px 40px;
+            background: #11141a;
+            border-bottom: 1px solid #282d38;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #4da3ff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: #151820;
+            border: 1px solid #282d38;
+            border-radius: 18px;
+            padding: 35px;
+        }
+
+        .program-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 20px;
+            background: #222631;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #969daa;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .info-box {
+            background: #101319;
+            border: 1px solid #282d38;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .info-box small {
+            display: block;
+            color: #777e8b;
+            margin-bottom: 8px;
+        }
+
+        .download-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: #4da3ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .download-button:hover {
+            background: #2d8ff0;
+            transform: translateY(-2px);
+        }
+
+        .note {
+            margin-top: 15px;
+            color: #777e8b;
+            font-size: 13px;
+        }
+
+        footer {
+            text-align: center;
+            color: #686f7c;
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 18px 20px;
+            }
+
+            .container {
+                margin-top: 30px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .program-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        Techno<span>Bkx</span>
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="card">
+
+        <div class="program-header">
+
+            <div class="icon">
+                7Z
+            </div>
+
+            <div>
+
+                <h1>
+                    7-Zip
+                </h1>
+
+                <p class="description">
+                    Darmowy program do kompresowania i rozpakowywania plików.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info">
+
+            <div class="info-box">
+
+                <small>
+                    Wersja
+                </small>
+
+                <strong>
+                    26.02
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <small>
+                    System
+                </small>
+
+                <strong>
+                    Windows 64-bit
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <small>
+                    Format
+                </small>
+
+                <strong>
+                    EXE
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="download-section">
+
+            <a
+                class="download-button"
+                href="https://www.7-zip.org/a/7z2602-x64.exe"
+            >
+                ⬇ Pobierz 7-Zip 26.02
+            </a>
+
+            <p class="note">
+                Pobieranie odbywa się bezpośrednio z oficjalnego serwera 7-Zip.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    © 2026 TechnoBkx
+
+</footer>
+
+</body>
+</html>

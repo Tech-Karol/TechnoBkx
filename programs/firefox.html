@@ -104,17 +104,12 @@
         .download-button {
             display: inline-block;
             padding: 16px 32px;
-
             background: #4da3ff;
             color: white;
-
             text-decoration: none;
-
             border-radius: 10px;
-
             font-size: 17px;
             font-weight: bold;
-
             transition: 0.2s;
         }
 
@@ -129,6 +124,18 @@
             font-size: 13px;
         }
 
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #969daa;
+        }
+
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #ff6b6b;
+        }
+
         footer {
             text-align: center;
             color: #686f7c;
@@ -136,7 +143,6 @@
         }
 
         @media (max-width: 650px) {
-
             header {
                 padding: 18px 20px;
             }
@@ -164,11 +170,9 @@
 <body>
 
 <header>
-
     <div class="logo">
         Techno<span>Bkx</span>
     </div>
-
 </header>
 
 
@@ -176,18 +180,60 @@
 
     <div class="card">
 
-        <div class="program-header">
+        <div id="loading" class="loading">
+            Ładowanie informacji o Firefoxie...
+        </div>
 
-            <div class="icon">
-                🦊
+        <div id="content" style="display: none;">
+
+            <div class="program-header">
+
+                <div class="icon">
+                    🦊
+                </div>
+
+                <div>
+                    <h1 id="name">Firefox</h1>
+
+                    <p id="description" class="description">
+                    </p>
+                </div>
+
             </div>
 
-            <div>
 
-                <h1>Firefox</h1>
+            <div class="info">
 
-                <p class="description">
-                    Szybka i prywatna przeglądarka internetowa.
+                <div class="info-box">
+                    <small>Wersja</small>
+                    <strong id="version"></strong>
+                </div>
+
+                <div class="info-box">
+                    <small>System</small>
+                    <strong id="system"></strong>
+                </div>
+
+                <div class="info-box">
+                    <small>Format</small>
+                    <strong id="format"></strong>
+                </div>
+
+            </div>
+
+
+            <div class="download-section">
+
+                <a
+                    id="download"
+                    class="download-button"
+                    href="#"
+                >
+                    ⬇ Pobierz Firefox
+                </a>
+
+                <p class="note">
+                    Pobieranie odbywa się bezpośrednio z oficjalnego CDN Mozilli.
                 </p>
 
             </div>
@@ -195,55 +241,8 @@
         </div>
 
 
-        <div class="info">
-
-            <div class="info-box">
-
-                <small>Wersja</small>
-
-                <strong>
-                    153.0.4</strong>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <small>System</small>
-
-                <strong>
-                    Windows 64-bit
-                </strong>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <small>Format</small>
-
-                <strong>
-                    EXE
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <div class="download-section">
-
-            <a
-                class="download-button"
-                href="https://download-installer.cdn.mozilla.net/pub/firefox/releases/153.0.4/win64/pl/Firefox%20Setup%20153.0.4.exe"
-            >
-                ⬇ Pobierz Firefox 153.0.4
-            </a>
-
-            <p class="note">
-                Pobieranie odbywa się bezpośrednio z oficjalnego CDN Mozilli.
-            </p>
-
+        <div id="error" class="error" style="display: none;">
+            Nie udało się pobrać informacji o Firefoxie.
         </div>
 
     </div>
@@ -252,10 +251,90 @@
 
 
 <footer>
-
     © 2026 TechnoBkx
-
 </footer>
+
+
+<script>
+
+    const DATA_URL =
+        "https://raw.githubusercontent.com/TWOJ_LOGIN/TechnoBkx-Data/main/programs.json";
+
+
+    async function loadFirefox() {
+
+        try {
+
+            const response = await fetch(DATA_URL, {
+                cache: "no-store"
+            });
+
+            if (!response.ok) {
+                throw new Error("Nie udało się pobrać programs.json");
+            }
+
+            const data = await response.json();
+
+            const firefox = data.firefox;
+
+            if (!firefox) {
+                throw new Error("Brak danych Firefoxa");
+            }
+
+
+            document.getElementById("name").textContent =
+                firefox.name;
+
+            document.getElementById("description").textContent =
+                firefox.description;
+
+            document.getElementById("version").textContent =
+                firefox.version;
+
+            document.getElementById("system").textContent =
+                firefox.system;
+
+            document.getElementById("format").textContent =
+                firefox.format;
+
+
+            const download =
+                document.getElementById("download");
+
+            download.href =
+                firefox.download;
+
+            download.textContent =
+                "⬇ Pobierz " +
+                firefox.name +
+                " " +
+                firefox.version;
+
+
+            document.getElementById("loading").style.display =
+                "none";
+
+            document.getElementById("content").style.display =
+                "block";
+
+        } catch (error) {
+
+            console.error(error);
+
+            document.getElementById("loading").style.display =
+                "none";
+
+            document.getElementById("error").style.display =
+                "block";
+
+        }
+
+    }
+
+
+    loadFirefox();
+
+</script>
 
 </body>
 </html>

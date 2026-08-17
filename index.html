@@ -12,6 +12,7 @@
     >
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -35,13 +36,18 @@
             min-height: 100vh;
         }
 
-        /* HEADER */
+
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
             height: 72px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             padding: 0 40px;
 
             background: #11141a;
@@ -67,6 +73,7 @@
             color: var(--muted);
             text-decoration: none;
             font-size: 14px;
+
             transition: 0.2s;
         }
 
@@ -74,16 +81,21 @@
             color: white;
         }
 
-        /* HERO */
+
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
             text-align: center;
+
             padding: 75px 20px 50px;
         }
 
         .hero h1 {
             font-size: 46px;
             letter-spacing: -2px;
+
             margin-bottom: 15px;
         }
 
@@ -94,28 +106,37 @@
         .hero p {
             color: var(--muted);
             font-size: 17px;
+
             margin-bottom: 30px;
         }
 
-        /* SEARCH */
+
+        /* =========================
+           SEARCH
+        ========================= */
 
         .search-container {
             max-width: 650px;
             margin: auto;
+
             position: relative;
         }
 
         .search {
             width: 100%;
+
             padding: 17px 22px;
             padding-left: 50px;
 
             background: #151820;
+
             border: 1px solid var(--border);
             border-radius: 12px;
 
             color: white;
+
             font-size: 16px;
+
             outline: none;
 
             transition: 0.2s;
@@ -125,25 +146,43 @@
             border-color: var(--accent);
         }
 
-        .search-icon {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 18px;
-            color: var(--muted);
+        .search::placeholder {
+            color: #686f7c;
         }
 
-        /* CATEGORIES */
+        .search-icon {
+            position: absolute;
+
+            left: 18px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 18px;
+
+            color: var(--muted);
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           CATEGORIES
+        ========================= */
 
         .categories {
             max-width: 1100px;
+
             margin: 0 auto 40px;
+
             padding: 0 20px;
 
             display: flex;
+
             gap: 10px;
+
             flex-wrap: wrap;
+
             justify-content: center;
         }
 
@@ -151,11 +190,16 @@
             padding: 9px 17px;
 
             background: #151820;
+
             border: 1px solid var(--border);
+
             border-radius: 20px;
 
             color: var(--muted);
+
             cursor: pointer;
+
+            font-size: 14px;
 
             transition: 0.2s;
         }
@@ -163,24 +207,35 @@
         .category:hover,
         .category.active {
             background: var(--accent);
+
             color: white;
+
             border-color: var(--accent);
         }
 
-        /* CONTENT */
+
+        /* =========================
+           CONTENT
+        ========================= */
 
         .content {
             max-width: 1100px;
+
             margin: auto;
+
             padding: 0 20px 70px;
         }
 
         .section-title {
             font-size: 23px;
+
             margin-bottom: 20px;
         }
 
-        /* PROGRAM GRID */
+
+        /* =========================
+           PROGRAM GRID
+        ========================= */
 
         .program-grid {
             display: grid;
@@ -191,10 +246,14 @@
             gap: 18px;
         }
 
-        /* PROGRAM CARD */
+
+        /* =========================
+           PROGRAM CARD
+        ========================= */
 
         .program {
             background: var(--card);
+
             border: 1px solid var(--border);
 
             border-radius: 15px;
@@ -202,6 +261,7 @@
             padding: 22px;
 
             text-decoration: none;
+
             color: white;
 
             transition:
@@ -212,54 +272,75 @@
 
         .program:hover {
             transform: translateY(-4px);
+
             background: var(--card-hover);
+
             border-color: #3b4250;
         }
 
+
         .program-top {
             display: flex;
+
             align-items: center;
+
             gap: 15px;
+
             margin-bottom: 18px;
         }
+
 
         .program-icon {
             width: 58px;
             height: 58px;
+
+            flex-shrink: 0;
 
             border-radius: 13px;
 
             background: #222631;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
             font-size: 29px;
         }
 
+
         .program-name {
             font-size: 18px;
+
             font-weight: 700;
         }
 
+
         .program-version {
             color: var(--muted);
+
             font-size: 13px;
+
             margin-top: 4px;
         }
 
+
         .program-description {
             color: var(--muted);
+
             font-size: 14px;
+
             line-height: 1.5;
 
             min-height: 42px;
         }
 
+
         .program-footer {
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
 
             margin-top: 20px;
@@ -269,22 +350,32 @@
             border-top: 1px solid var(--border);
         }
 
+
         .platform {
             color: var(--muted);
+
             font-size: 12px;
         }
 
+
         .download {
             color: var(--accent);
+
             font-size: 13px;
+
             font-weight: bold;
         }
 
-        /* NO RESULTS */
+
+        /* =========================
+           NO RESULTS
+        ========================= */
 
         .no-results {
             display: none;
+
             text-align: center;
+
             padding: 60px 20px;
 
             color: var(--muted);
@@ -292,10 +383,14 @@
 
         .no-results h2 {
             color: white;
+
             margin-bottom: 10px;
         }
 
-        /* FOOTER */
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             border-top: 1px solid var(--border);
@@ -309,7 +404,10 @@
             font-size: 13px;
         }
 
-        /* MOBILE */
+
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 700px) {
 
@@ -332,13 +430,20 @@
             .program-grid {
                 grid-template-columns: 1fr;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-<!-- HEADER -->
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -346,23 +451,42 @@
         Techno<span>Bkx</span>
     </div>
 
+
     <nav>
-        <a href="#">Strona główna</a>
-        <a href="#">Programy</a>
-        <a href="#">ISO</a>
-        <a href="#">O projekcie</a>
+
+        <a href="index.html">
+            Strona główna
+        </a>
+
+        <a href="#programy">
+            Programy
+        </a>
+
+        <a href="#iso">
+            ISO
+        </a>
+
+        <a href="#o-projekcie">
+            O projekcie
+        </a>
+
     </nav>
 
 </header>
 
 
-<!-- HERO -->
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
     <h1>
-        Znajdź swoje <span>oprogramowanie</span>
+        Znajdź swoje
+        <span>oprogramowanie</span>
     </h1>
+
 
     <p>
         Programy, narzędzia i systemy w jednym miejscu.
@@ -371,7 +495,10 @@
 
     <div class="search-container">
 
-        <span class="search-icon">🔎</span>
+        <span class="search-icon">
+            🔎
+        </span>
+
 
         <input
             id="search"
@@ -379,6 +506,7 @@
             type="search"
             placeholder="Szukaj programu..."
             autocomplete="off"
+            aria-label="Szukaj programu"
         >
 
     </div>
@@ -386,347 +514,436 @@
 </section>
 
 
-<!-- CATEGORIES -->
+
+<!-- =========================
+     CATEGORIES
+========================= -->
 
 <div class="categories">
 
-    <button class="category active" data-category="all">
+    <button
+        class="category active"
+        data-category="all"
+    >
         Wszystko
     </button>
 
-    <button class="category" data-category="windows">
+
+    <button
+        class="category"
+        data-category="windows"
+    >
         💻 Windows
     </button>
 
-    <button class="category" data-category="linux">
+
+    <button
+        class="category"
+        data-category="linux"
+    >
         🐧 Linux
     </button>
 
-    <button class="category" data-category="tools">
+
+    <button
+        class="category"
+        data-category="tools"
+    >
         🛠️ Narzędzia
     </button>
 
-    <button class="category" data-category="browser">
+
+    <button
+        class="category"
+        data-category="browser"
+    >
         🌐 Przeglądarki
     </button>
 
-    <button class="category" data-category="iso">
+
+    <button
+        class="category"
+        data-category="iso"
+    >
         💿 ISO
     </button>
 
 </div>
 
 
-<!-- PROGRAMS -->
 
-<main class="content">
+<!-- =========================
+     PROGRAMS
+========================= -->
+
+<main
+    class="content"
+    id="programy"
+>
 
     <h2 class="section-title">
         Popularne programy
     </h2>
 
 
-    <div id="programGrid" class="program-grid">
-
-
-       <div id="programGrid" class="program-grid">
-
-    <!-- FIREFOX -->
-
-    <a
-        href="programs/firefox.html"
-        class="program"
-        data-name="Firefox"
-        data-category="windows browser"
+    <div
+        id="programGrid"
+        class="program-grid"
     >
 
-        <div class="program-top">
 
-            <div class="program-icon">
-                🦊
-            </div>
+        <!-- =====================
+             FIREFOX
+        ====================== -->
 
-            <div>
+        <a
+            href="programs/firefox.html"
+            class="program"
+            data-name="Firefox"
+            data-category="windows browser"
+        >
 
-                <div class="program-name">
-                    Firefox
+            <div class="program-top">
+
+                <div class="program-icon">
+                    🦊
                 </div>
 
-                <div class="program-version">
-                    Automatyczna wersja
+
+                <div>
+
+                    <div class="program-name">
+                        Firefox
+                    </div>
+
+
+                    <div class="program-version">
+                        Automatyczna wersja
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
 
-        <div class="program-description">
-            Szybka i prywatna przeglądarka internetowa.
-        </div>
-
-        <div class="program-footer">
-
-            <span class="platform">
-                Windows x64
-            </span>
-
-            <span class="download">
-                Pobierz →
-            </span>
-
-        </div>
-
-    </a>
+            <div class="program-description">
+                Szybka i prywatna przeglądarka internetowa.
+            </div>
 
 
-    <!-- 7-ZIP -->
+            <div class="program-footer">
 
-    <a
-        href="programs/7zip.html"
-        class="program"
-        data-name="7-Zip"
-        data-category="windows tools"
+                <span class="platform">
+                    Windows x64
+                </span>
+
+
+                <span class="download">
+                    Pobierz →
+                </span>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- =====================
+             7-ZIP
+        ====================== -->
+
+        <a
+            href="programs/7zip.html"
+            class="program"
+            data-name="7-Zip"
+            data-category="windows tools"
+        >
+
+            <div class="program-top">
+
+                <div class="program-icon">
+                    📦
+                </div>
+
+
+                <div>
+
+                    <div class="program-name">
+                        7-Zip
+                    </div>
+
+
+                    <div class="program-version">
+                        Automatyczna wersja
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="program-description">
+                Popularny program do kompresowania i rozpakowywania plików.
+            </div>
+
+
+            <div class="program-footer">
+
+                <span class="platform">
+                    Windows x64
+                </span>
+
+
+                <span class="download">
+                    Pobierz →
+                </span>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- =====================
+             VLC
+        ====================== -->
+
+        <a
+            href="programs/vlc.html"
+            class="program"
+            data-name="VLC Media Player"
+            data-category="windows linux tools"
+        >
+
+            <div class="program-top">
+
+                <div class="program-icon">
+                    🎬
+                </div>
+
+
+                <div>
+
+                    <div class="program-name">
+                        VLC Media Player
+                    </div>
+
+
+                    <div class="program-version">
+                        Automatyczna wersja
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="program-description">
+                Odtwarzacz multimedialny obsługujący wiele formatów.
+            </div>
+
+
+            <div class="program-footer">
+
+                <span class="platform">
+                    Windows / Linux
+                </span>
+
+
+                <span class="download">
+                    Pobierz →
+                </span>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- =====================
+             GIMP
+        ====================== -->
+
+        <a
+            href="programs/gimp.html"
+            class="program"
+            data-name="GIMP"
+            data-category="windows linux tools"
+        >
+
+            <div class="program-top">
+
+                <div class="program-icon">
+                    🎨
+                </div>
+
+
+                <div>
+
+                    <div class="program-name">
+                        GIMP
+                    </div>
+
+
+                    <div class="program-version">
+                        Automatyczna wersja
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="program-description">
+                Darmowy edytor grafiki rastrowej.
+            </div>
+
+
+            <div class="program-footer">
+
+                <span class="platform">
+                    Windows / Linux
+                </span>
+
+
+                <span class="download">
+                    Pobierz →
+                </span>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- =====================
+             UBUNTU
+        ====================== -->
+
+        <a
+            href="programs/ubuntu.html"
+            class="program"
+            data-name="Ubuntu"
+            data-category="linux iso"
+        >
+
+            <div class="program-top">
+
+                <div class="program-icon">
+                    🐧
+                </div>
+
+
+                <div>
+
+                    <div class="program-name">
+                        Ubuntu
+                    </div>
+
+
+                    <div class="program-version">
+                        Automatyczna wersja
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="program-description">
+                Popularna dystrybucja systemu Linux.
+            </div>
+
+
+            <div class="program-footer">
+
+                <span class="platform">
+                    Linux x64
+                </span>
+
+
+                <span class="download">
+                    Pobierz ISO →
+                </span>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- =====================
+             WINDOWS
+        ====================== -->
+
+        <a
+            href="programs/windows.html"
+            class="program"
+            data-name="Windows"
+            data-category="windows iso"
+        >
+
+            <div class="program-top">
+
+                <div class="program-icon">
+                    🪟
+                </div>
+
+
+                <div>
+
+                    <div class="program-name">
+                        Windows
+                    </div>
+
+
+                    <div class="program-version">
+                        Windows 11
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="program-description">
+                System operacyjny Microsoft dla komputerów PC.
+            </div>
+
+
+            <div class="program-footer">
+
+                <span class="platform">
+                    Windows x64
+                </span>
+
+
+                <span class="download">
+                    Pobierz ISO →
+                </span>
+
+            </div>
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         NO RESULTS
+    ========================== -->
+
+    <div
+        id="noResults"
+        class="no-results"
     >
-
-        <div class="program-top">
-
-            <div class="program-icon">
-                📦
-            </div>
-
-            <div>
-
-                <div class="program-name">
-                    7-Zip
-                </div>
-
-                <div class="program-version">
-                    Automatyczna wersja
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="program-description">
-            Program do kompresowania i rozpakowywania plików.
-        </div>
-
-        <div class="program-footer">
-
-            <span class="platform">
-                Windows x64
-            </span>
-
-            <span class="download">
-                Pobierz →
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- VLC -->
-
-    <a
-        href="programs/vlc.html"
-        class="program"
-        data-name="VLC Media Player"
-        data-category="windows linux tools"
-    >
-
-        <div class="program-top">
-
-            <div class="program-icon">
-                🎬
-            </div>
-
-            <div>
-
-                <div class="program-name">
-                    VLC Media Player
-                </div>
-
-                <div class="program-version">
-                    Automatyczna wersja
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="program-description">
-            Odtwarzacz multimedialny obsługujący wiele formatów.
-        </div>
-
-        <div class="program-footer">
-
-            <span class="platform">
-                Windows / Linux
-            </span>
-
-            <span class="download">
-                Pobierz →
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- GIMP -->
-
-    <a
-        href="programs/gimp.html"
-        class="program"
-        data-name="GIMP"
-        data-category="windows linux tools"
-    >
-
-        <div class="program-top">
-
-            <div class="program-icon">
-                🎨
-            </div>
-
-            <div>
-
-                <div class="program-name">
-                    GIMP
-                </div>
-
-                <div class="program-version">
-                    Automatyczna wersja
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="program-description">
-            Darmowy i otwartoźródłowy edytor grafiki.
-        </div>
-
-        <div class="program-footer">
-
-            <span class="platform">
-                Windows / Linux
-            </span>
-
-            <span class="download">
-                Pobierz →
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- UBUNTU -->
-
-    <a
-        href="programs/ubuntu.html"
-        class="program"
-        data-name="Ubuntu"
-        data-category="linux iso"
-    >
-
-        <div class="program-top">
-
-            <div class="program-icon">
-                🐧
-            </div>
-
-            <div>
-
-                <div class="program-name">
-                    Ubuntu
-                </div>
-
-                <div class="program-version">
-                    Automatyczna wersja
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="program-description">
-            Popularna dystrybucja systemu Linux.
-        </div>
-
-        <div class="program-footer">
-
-            <span class="platform">
-                Linux x64
-            </span>
-
-            <span class="download">
-                Pobierz ISO →
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <!-- WINDOWS -->
-
-    <a
-        href="programs/windows.html"
-        class="program"
-        data-name="Windows"
-        data-category="windows iso"
-    >
-
-        <div class="program-top">
-
-            <div class="program-icon">
-                🪟
-            </div>
-
-            <div>
-
-                <div class="program-name">
-                    Windows
-                </div>
-
-                <div class="program-version">
-                    Windows 11
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="program-description">
-            System operacyjny Microsoft dla komputerów PC.
-        </div>
-
-        <div class="program-footer">
-
-            <span class="platform">
-                Windows x64
-            </span>
-
-            <span class="download">
-                Pobierz ISO →
-            </span>
-
-        </div>
-
-    </a>
-
-</div>
-    
-
-
-    <div id="noResults" class="no-results">
 
         <h2>
             Nie znaleziono programu
         </h2>
+
 
         <p>
             Spróbuj wyszukać inną nazwę lub kategorię.
@@ -737,7 +954,49 @@
 </main>
 
 
-<!-- FOOTER -->
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+    id="o-projekcie"
+    style="
+        max-width:1100px;
+        margin:0 auto;
+        padding:0 20px 70px;
+        text-align:center;
+    "
+>
+
+    <h2
+        style="
+            font-size:23px;
+            margin-bottom:12px;
+        "
+    >
+        O TechnoBkx
+    </h2>
+
+
+    <p
+        style="
+            color:#969daa;
+            font-size:14px;
+            line-height:1.6;
+        "
+    >
+        TechnoBkx to katalog programów, narzędzi
+        i systemów operacyjnych zebranych w jednym miejscu.
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -746,15 +1005,27 @@
 </footer>
 
 
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
-    const searchInput = document.getElementById("search");
+    const searchInput =
+        document.getElementById("search");
 
-    const programs = document.querySelectorAll(".program");
 
-    const categories = document.querySelectorAll(".category");
+    const programs =
+        document.querySelectorAll(".program");
 
-    const noResults = document.getElementById("noResults");
+
+    const categories =
+        document.querySelectorAll(".category");
+
+
+    const noResults =
+        document.getElementById("noResults");
 
 
     let selectedCategory = "all";
@@ -767,16 +1038,20 @@
                 .toLowerCase()
                 .trim();
 
+
         let visible = 0;
 
 
         programs.forEach(program => {
 
             const name =
-                program.dataset.name.toLowerCase();
+                program.dataset.name
+                    .toLowerCase();
+
 
             const programCategories =
-                program.dataset.category.toLowerCase();
+                program.dataset.category
+                    .toLowerCase();
 
 
             const matchesSearch =
@@ -785,10 +1060,15 @@
 
             const matchesCategory =
                 selectedCategory === "all" ||
-                programCategories.includes(selectedCategory);
+                programCategories.includes(
+                    selectedCategory
+                );
 
 
-            if (matchesSearch && matchesCategory) {
+            if (
+                matchesSearch &&
+                matchesCategory
+            ) {
 
                 program.style.display = "";
 
@@ -804,10 +1084,14 @@
 
 
         noResults.style.display =
-            visible === 0 ? "block" : "none";
+            visible === 0
+                ? "block"
+                : "none";
 
     }
 
+
+    /* WYSZUKIWANIE */
 
     searchInput.addEventListener(
         "input",
@@ -815,31 +1099,46 @@
     );
 
 
+    /* KATEGORIE */
+
     categories.forEach(category => {
 
-        category.addEventListener("click", () => {
+        category.addEventListener(
+            "click",
+            () => {
 
-            categories.forEach(button => {
+                categories.forEach(button => {
 
-                button.classList.remove("active");
+                    button.classList.remove(
+                        "active"
+                    );
 
-            });
-
-
-            category.classList.add("active");
-
-
-            selectedCategory =
-                category.dataset.category;
+                });
 
 
-            filterPrograms();
+                category.classList.add(
+                    "active"
+                );
 
-        });
+
+                selectedCategory =
+                    category.dataset.category;
+
+
+                filterPrograms();
+
+            }
+        );
 
     });
 
+
+    /* START */
+
+    filterPrograms();
+
 </script>
+
 
 </body>
 </html>

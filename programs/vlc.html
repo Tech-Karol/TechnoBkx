@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VLC Media Player — TechnoBkx</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0d11;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 20px 40px;
+            background: #11141a;
+            border-bottom: 1px solid #282d38;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #4da3ff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: #151820;
+            border: 1px solid #282d38;
+            border-radius: 18px;
+            padding: 35px;
+        }
+
+        .program-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 20px;
+            background: #222631;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 46px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #969daa;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .info-box {
+            background: #101319;
+            border: 1px solid #282d38;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .info-box small {
+            display: block;
+            color: #777e8b;
+            margin-bottom: 8px;
+        }
+
+        .downloads {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .download-button {
+            display: block;
+            padding: 16px 20px;
+            background: #4da3ff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .download-button:hover {
+            background: #2d8ff0;
+            transform: translateY(-2px);
+        }
+
+        .linux-button {
+            background: #252a34;
+            border: 1px solid #3a414e;
+        }
+
+        .linux-button:hover {
+            background: #303642;
+        }
+
+        .note {
+            margin-top: 18px;
+            color: #777e8b;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .status {
+            margin-top: 15px;
+            text-align: center;
+            color: #777e8b;
+            font-size: 12px;
+        }
+
+        footer {
+            text-align: center;
+            color: #686f7c;
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 18px 20px;
+            }
+
+            .container {
+                margin-top: 30px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .program-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+
+            .downloads {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        Techno<span>Bkx</span>
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="card">
+
+        <div class="program-header">
+
+            <div class="icon">
+                🍿
+            </div>
+
+            <div>
+
+                <h1>
+                    VLC Media Player
+                </h1>
+
+                <p class="description">
+                    Darmowy i otwartoźródłowy odtwarzacz multimedialny.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info">
+
+            <div class="info-box">
+
+                <small>
+                    Wersja
+                </small>
+
+                <strong id="version">
+                    Sprawdzanie...
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <small>
+                    Windows
+                </small>
+
+                <strong>
+                    64-bit
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <small>
+                    Linux
+                </small>
+
+                <strong>
+                    x64 / ARM / inne
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="downloads">
+
+            <a
+                id="windowsDownload"
+                class="download-button"
+                href="#"
+            >
+                ⬇ Pobierz VLC dla Windows
+            </a>
+
+
+            <a
+                class="download-button linux-button"
+                href="https://www.videolan.org/vlc/download-linux.html"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                🐧 VLC dla Linux
+            </a>
+
+        </div>
+
+
+        <p class="note">
+            Windows: bezpośredni instalator z infrastruktury VideoLAN.
+            Linux: oficjalna strona VideoLAN.
+        </p>
+
+
+        <div
+            id="status"
+            class="status"
+        >
+            Sprawdzanie najnowszej wersji...
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    © 2026 TechnoBkx
+
+</footer>
+
+
+<script>
+
+    /*
+     * Ostatnia znana wersja.
+     * Jest używana jako awaryjny fallback.
+     */
+
+    const FALLBACK_VERSION = "3.0.23";
+
+
+    /*
+     * Oficjalny katalog VideoLAN.
+     */
+
+    const VLC_BASE =
+        "https://downloads.videolan.org/videolan/vlc";
+
+
+    /*
+     * Oficjalna strona pobierania VideoLAN.
+     */
+
+    const VLC_OFFICIAL =
+        "https://www.videolan.org/vlc/";
+
+
+    async function getVLCVersion() {
+
+        try {
+
+            /*
+             * Pobieramy listę wydań VLC.
+             */
+
+            const response = await fetch(
+                "https://downloads.videolan.org/videolan/vlc/",
+                {
+                    cache: "no-store"
+                }
+            );
+
+
+            if (!response.ok) {
+                throw new Error(
+                    "Nie udało się pobrać listy wersji VLC."
+                );
+            }
+
+
+            const html =
+                await response.text();
+
+
+            /*
+             * Szukamy katalogów wersji:
+             *
+             * 3.0.23/
+             * 3.0.22/
+             * itd.
+             */
+
+            const matches =
+                [...html.matchAll(
+                    /href="(\d+\.\d+\.\d+)\/"/g
+                )];
+
+
+            const versions =
+                matches.map(
+                    match => match[1]
+                );
+
+
+            if (versions.length === 0) {
+                throw new Error(
+                    "Nie znaleziono wersji VLC."
+                );
+            }
+
+
+            /*
+             * Sortowanie wersji numerycznie.
+             */
+
+            versions.sort((a, b) => {
+
+                const A =
+                    a.split(".").map(Number);
+
+                const B =
+                    b.split(".").map(Number);
+
+
+                for (let i = 0; i < 3; i++) {
+
+                    if (A[i] !== B[i]) {
+                        return B[i] - A[i];
+                    }
+
+                }
+
+                return 0;
+
+            });
+
+
+            return versions[0];
+
+        } catch (error) {
+
+            console.error(
+                "TechnoBkx VLC:",
+                error
+            );
+
+            return FALLBACK_VERSION;
+        }
+    }
+
+
+    async function loadVLC() {
+
+        const versionElement =
+            document.getElementById("version");
+
+        const downloadButton =
+            document.getElementById("windowsDownload");
+
+        const status =
+            document.getElementById("status");
+
+
+        try {
+
+            const version =
+                await getVLCVersion();
+
+
+            /*
+             * Wyświetlenie wersji.
+             */
+
+            versionElement.textContent =
+                version;
+
+
+            /*
+             * Oficjalny instalator Windows x64.
+             */
+
+            const downloadURL =
+                `${VLC_BASE}/${version}/win64/vlc-${version}-win64.exe`;
+
+
+            /*
+             * Ustawienie przycisku.
+             */
+
+            downloadButton.href =
+                downloadURL;
+
+
+            downloadButton.download = "";
+
+
+            downloadButton.textContent =
+                `⬇ Pobierz VLC ${version}`;
+
+
+            status.textContent =
+                "Wersja sprawdzona online.";
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            /*
+             * Awaryjne przekierowanie
+             * do oficjalnej strony VideoLAN.
+             */
+
+            versionElement.textContent =
+                FALLBACK_VERSION;
+
+
+            downloadButton.href =
+                VLC_OFFICIAL;
+
+
+            downloadButton.target =
+                "_blank";
+
+
+            downloadButton.rel =
+                "noopener noreferrer";
+
+
+            downloadButton.textContent =
+                "🌐 Pobierz VLC z VideoLAN";
+
+
+            status.textContent =
+                "Przekierowanie do oficjalnej strony VideoLAN.";
+
+        }
+
+    }
+
+
+    loadVLC();
+
+</script>
+
+</body>
+</html>

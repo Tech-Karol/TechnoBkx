@@ -58,13 +58,13 @@
             width: 90px;
             height: 90px;
             border-radius: 20px;
-            background: #222631;
+            background: #4a3b75;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            font-size: 42px;
+            font-size: 48px;
             font-weight: bold;
         }
 
@@ -107,13 +107,17 @@
         .download-button {
             display: block;
             padding: 16px 20px;
+
             background: #4da3ff;
             color: white;
+
             text-decoration: none;
             border-radius: 10px;
+
             font-size: 16px;
             font-weight: bold;
             text-align: center;
+
             transition: 0.2s;
         }
 
@@ -143,6 +147,10 @@
             text-align: center;
             color: #777e8b;
             font-size: 12px;
+        }
+
+        .error {
+            color: #ff7070;
         }
 
         footer {
@@ -239,7 +247,7 @@
                 </small>
 
                 <strong>
-                    x64 / ARM64
+                    64-bit
                 </strong>
 
             </div>
@@ -252,7 +260,7 @@
                 </small>
 
                 <strong>
-                    x86_64 / ARM64
+                    x64 / ARM64
                 </strong>
 
             </div>
@@ -267,7 +275,7 @@
                 class="download-button"
                 href="#"
             >
-                ⬇ Pobierz GIMP dla Windows
+                ⏳ Sprawdzanie wersji...
             </a>
 
 
@@ -285,7 +293,7 @@
 
         <p class="note">
             Windows: oficjalny instalator GIMP.
-            Linux: oficjalna strona pobierania GIMP.
+            Linux: oficjalna strona GIMP.
         </p>
 
 
@@ -293,7 +301,7 @@
             id="status"
             class="status"
         >
-            Sprawdzanie aktualnej wersji...
+            Łączenie z oficjalnym źródłem GIMP...
         </div>
 
     </div>
@@ -311,27 +319,22 @@
 <script>
 
     /*
-     * Aktualna stabilna wersja awaryjna.
-     * GIMP 3.2.4 jest obecnym stable release.
+     * Oficjalne repozytorium GIMP.
+     *
+     * API GitHub pozwala pobrać najnowszy
+     * release bez ręcznego wpisywania wersji.
      */
 
-    const FALLBACK_VERSION = "3.2.4";
+    const API_URL =
+        "https://api.github.com/repos/GNOME/gimp/releases/latest";
 
 
     /*
-     * Oficjalna strona pobierania GIMP.
+     * Oficjalna strona GIMP.
      */
 
-    const GIMP_OFFICIAL =
+    const OFFICIAL_URL =
         "https://www.gimp.org/downloads/";
-
-
-    /*
-     * Oficjalny katalog pobierania GIMP.
-     */
-
-    const GIMP_DOWNLOAD =
-        "https://download.gimp.org/pub/gimp/v3.2/windows/"
 
 
     async function loadGIMP() {
@@ -342,53 +345,217 @@
         const downloadButton =
             document.getElementById("windowsDownload");
 
-        const status =
+        const statusElement =
             document.getElementById("status");
 
 
-        /*
-         * Na początek pokazujemy aktualną
-         * stabilną wersję.
-         */
+        try {
 
-        versionElement.textContent =
-            FALLBACK_VERSION;
+            /*
+             * Pobieramy najnowszy release GIMP.
+             */
 
+            const response =
+                await fetch(
+                    API_URL,
+                    {
+                        cache: "no-store",
 
-        /*
-         * Oficjalny instalator Windows.
-         *
-         * Jeśli struktura serwera GIMP się zmieni,
-         * przycisk zostanie skierowany na
-         * oficjalną stronę zamiast do nieistniejącego pliku.
-         */
-
-        const directURL =
-            GIMP_DOWNLOAD +
-            "gimp-" +
-            FALLBACK_VERSION +
-            "-setup.exe";
+                        headers: {
+                            "Accept":
+                                "application/vnd.github+json"
+                        }
+                    }
+                );
 
 
-        /*
-         * Ustawiamy oficjalny instalator.
-         */
+            if (!response.ok) {
 
-        downloadButton.href =
-            directURL;
+                throw new Error(
+                    "GitHub API HTTP " +
+                    response.status
+                );
 
-
-        downloadButton.textContent =
-            "⬇ Pobierz GIMP " +
-            FALLBACK_VERSION;
+            }
 
 
-        status.textContent =
-            "GIMP Stable: " +
-            FALLBACK_VERSION;
+            const release =
+                await response.json();
+
+
+            /*
+             * Pobieramy numer wersji.
+             */
+
+            let version =
+                release.tag_name ||
+                release.name;
+
+
+            if (!version) {
+
+                throw new Error(
+                    "Nie znaleziono wersji GIMP."
+                );
+
+            }
+
+
+            /*
+             * Usuwamy ewentualne "GIMP "
+             * oraz "v" z początku.
+             */
+
+            version =
+                version
+                    .replace(/^GIMP\s*/i, "")
+                    .replace(/^v/i, "");
+
+
+            /*
+             * Szukamy Windowsowego instalatora.
+             *
+             * GIMP może zmieniać nazwy assetów,
+             * dlatego sprawdzamy kilka możliwych
+             * wariantów.
+             */
+
+            const assets =
+                release.assets || [];
+
+
+            let installer =
+                assets.find(
+                    asset =>
+                        /windows/i.test(asset.name) &&
+                        /\.exe$/i.test(asset.name)
+                );
+
+
+            /*
+             * Jeżeli release nie zawiera EXE,
+             * szukamy dowolnego instalatora EXE.
+             */
+
+            if (!installer) {
+
+                installer =
+                    assets.find(
+                        asset =>
+                            /\.exe$/i.test(
+                                asset.name
+                            )
+                    );
+
+            }
+
+
+            /*
+             * Jeżeli znaleziono instalator,
+             * używamy oficjalnego assetu GitHub.
+             */
+
+            if (installer) {
+
+                downloadButton.href =
+                    installer.browser_download_url;
+
+                downloadButton.target =
+                    "_blank";
+
+                downloadButton.rel =
+                    "noopener noreferrer";
+
+                downloadButton.textContent =
+                    "⬇ Pobierz GIMP " +
+                    version;
+
+                statusElement.textContent =
+                    "Automatycznie wykryto najnowszą wersję.";
+
+            } else {
+
+                /*
+                 * Brak EXE w Release.
+                 *
+                 * Nie zgadujemy adresu pliku.
+                 * Kierujemy użytkownika na oficjalną
+                 * stronę pobierania GIMP.
+                 */
+
+                downloadButton.href =
+                    OFFICIAL_URL;
+
+                downloadButton.target =
+                    "_blank";
+
+                downloadButton.rel =
+                    "noopener noreferrer";
+
+                downloadButton.textContent =
+                    "🌐 Pobierz GIMP z oficjalnej strony";
+
+                statusElement.textContent =
+                    "Wersja wykryta, ale brak bezpośredniego instalatora.";
+
+            }
+
+
+            versionElement.textContent =
+                version;
+
+
+        } catch (error) {
+
+            console.error(
+                "TechnoBkx GIMP:",
+                error
+            );
+
+
+            /*
+             * Fallback:
+             *
+             * jeśli GitHub API nie działa,
+             * nie zgadujemy wersji ani pliku.
+             */
+
+            versionElement.textContent =
+                "Sprawdź na stronie GIMP";
+
+
+            downloadButton.href =
+                OFFICIAL_URL;
+
+
+            downloadButton.target =
+                "_blank";
+
+
+            downloadButton.rel =
+                "noopener noreferrer";
+
+
+            downloadButton.textContent =
+                "🌐 Oficjalna strona GIMP";
+
+
+            statusElement.textContent =
+                "Automatyczne sprawdzanie niedostępne.";
+
+            statusElement.classList.add(
+                "error"
+            );
+
+        }
 
     }
 
+
+    /*
+     * Sprawdzamy przy każdym wejściu
+     * na stronę.
+     */
 
     loadGIMP();
 

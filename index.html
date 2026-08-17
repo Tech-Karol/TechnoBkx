@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>TechnoBkx — Software & Downloads</title>
 
@@ -19,6 +24,7 @@
             padding: 0;
         }
 
+
         :root {
             --bg: #0b0d11;
             --card: #151820;
@@ -29,10 +35,14 @@
             --accent: #4da3ff;
         }
 
+
         body {
             font-family: Arial, Helvetica, sans-serif;
+
             background: var(--bg);
+
             color: var(--text);
+
             min-height: 100vh;
         }
 
@@ -45,37 +55,50 @@
             height: 72px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
 
             padding: 0 40px;
 
             background: #11141a;
+
             border-bottom: 1px solid var(--border);
         }
 
+
         .logo {
             font-size: 25px;
+
             font-weight: 800;
+
             letter-spacing: -1px;
         }
+
 
         .logo span {
             color: var(--accent);
         }
 
+
         nav {
             display: flex;
+
             gap: 25px;
         }
 
+
         nav a {
             color: var(--muted);
+
             text-decoration: none;
+
             font-size: 14px;
 
             transition: 0.2s;
         }
+
 
         nav a:hover {
             color: white;
@@ -92,19 +115,24 @@
             padding: 75px 20px 50px;
         }
 
+
         .hero h1 {
             font-size: 46px;
+
             letter-spacing: -2px;
 
             margin-bottom: 15px;
         }
 
+
         .hero h1 span {
             color: var(--accent);
         }
 
+
         .hero p {
             color: var(--muted);
+
             font-size: 17px;
 
             margin-bottom: 30px;
@@ -117,20 +145,24 @@
 
         .search-container {
             max-width: 650px;
+
             margin: auto;
 
             position: relative;
         }
 
+
         .search {
             width: 100%;
 
             padding: 17px 22px;
+
             padding-left: 50px;
 
             background: #151820;
 
             border: 1px solid var(--border);
+
             border-radius: 12px;
 
             color: white;
@@ -142,18 +174,17 @@
             transition: 0.2s;
         }
 
+
         .search:focus {
             border-color: var(--accent);
         }
 
-        .search::placeholder {
-            color: #686f7c;
-        }
 
         .search-icon {
             position: absolute;
 
             left: 18px;
+
             top: 50%;
 
             transform: translateY(-50%);
@@ -161,8 +192,6 @@
             font-size: 18px;
 
             color: var(--muted);
-
-            pointer-events: none;
         }
 
 
@@ -186,6 +215,7 @@
             justify-content: center;
         }
 
+
         .category {
             padding: 9px 17px;
 
@@ -199,10 +229,11 @@
 
             cursor: pointer;
 
-            font-size: 14px;
-
             transition: 0.2s;
+
+            font-size: 14px;
         }
+
 
         .category:hover,
         .category.active {
@@ -225,6 +256,7 @@
 
             padding: 0 20px 70px;
         }
+
 
         .section-title {
             font-size: 23px;
@@ -252,6 +284,8 @@
         ========================= */
 
         .program {
+            display: block;
+
             background: var(--card);
 
             border: 1px solid var(--border);
@@ -269,6 +303,7 @@
                 background 0.2s,
                 border-color 0.2s;
         }
+
 
         .program:hover {
             transform: translateY(-4px);
@@ -292,6 +327,7 @@
 
         .program-icon {
             width: 58px;
+
             height: 58px;
 
             flex-shrink: 0;
@@ -303,6 +339,7 @@
             display: flex;
 
             align-items: center;
+
             justify-content: center;
 
             font-size: 29px;
@@ -343,6 +380,8 @@
 
             align-items: center;
 
+            gap: 10px;
+
             margin-top: 20px;
 
             padding-top: 15px;
@@ -364,6 +403,94 @@
             font-size: 13px;
 
             font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .loading {
+            text-align: center;
+
+            padding: 60px 20px;
+
+            color: var(--muted);
+
+            font-size: 15px;
+        }
+
+
+        .loading-spinner {
+            width: 35px;
+
+            height: 35px;
+
+            margin: 0 auto 15px;
+
+            border: 3px solid #282d38;
+
+            border-top-color: var(--accent);
+
+            border-radius: 50%;
+
+            animation: spin 0.8s linear infinite;
+        }
+
+
+        @keyframes spin {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =========================
+           ERROR
+        ========================= */
+
+        .error {
+            display: none;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            color: var(--muted);
+        }
+
+
+        .error h2 {
+            color: white;
+
+            margin-bottom: 10px;
+        }
+
+
+        .error code {
+            display: inline-block;
+
+            margin-top: 15px;
+
+            padding: 10px 15px;
+
+            background: #151820;
+
+            border: 1px solid var(--border);
+
+            border-radius: 8px;
+
+            color: #ff8585;
+
+            font-size: 13px;
         }
 
 
@@ -380,6 +507,7 @@
 
             color: var(--muted);
         }
+
 
         .no-results h2 {
             color: white;
@@ -415,17 +543,21 @@
                 padding: 0 20px;
             }
 
+
             nav {
                 display: none;
             }
+
 
             .hero {
                 padding-top: 50px;
             }
 
+
             .hero h1 {
                 font-size: 36px;
             }
+
 
             .program-grid {
                 grid-template-columns: 1fr;
@@ -454,7 +586,7 @@
 
     <nav>
 
-        <a href="index.html">
+        <a href="#">
             Strona główna
         </a>
 
@@ -483,8 +615,7 @@
 <section class="hero">
 
     <h1>
-        Znajdź swoje
-        <span>oprogramowanie</span>
+        Znajdź swoje <span>oprogramowanie</span>
     </h1>
 
 
@@ -506,7 +637,6 @@
             type="search"
             placeholder="Szukaj programu..."
             autocomplete="off"
-            aria-label="Szukaj programu"
         >
 
     </div>
@@ -573,416 +703,46 @@
 
 
 <!-- =========================
-     PROGRAMS
+     CONTENT
 ========================= -->
 
 <main
-    class="content"
     id="programy"
+    class="content"
 >
+
 
     <h2 class="section-title">
         Popularne programy
     </h2>
 
 
+
+    <!-- LOADING -->
+
+    <div
+        id="loading"
+        class="loading"
+    >
+
+        <div class="loading-spinner"></div>
+
+        Ładowanie programów...
+
+    </div>
+
+
+
+    <!-- PROGRAM GRID -->
+
     <div
         id="programGrid"
         class="program-grid"
-    >
+    ></div>
 
 
-        <!-- =====================
-             FIREFOX
-        ====================== -->
 
-        <a
-            href="programs/firefox.html"
-            class="program"
-            data-name="Firefox"
-            data-category="windows browser"
-        >
-
-            <div class="program-top">
-
-                <div class="program-icon">
-                    🦊
-                </div>
-
-
-                <div>
-
-                    <div class="program-name">
-                        Firefox
-                    </div>
-
-
-                    <div class="program-version">
-                        Automatyczna wersja
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="program-description">
-                Szybka i prywatna przeglądarka internetowa.
-            </div>
-
-
-            <div class="program-footer">
-
-                <span class="platform">
-                    Windows x64
-                </span>
-
-
-                <span class="download">
-                    Pobierz →
-                </span>
-
-            </div>
-
-        </a>
-
-
-
-        <!-- =====================
-             7-ZIP
-        ====================== -->
-
-        <a
-            href="programs/7zip.html"
-            class="program"
-            data-name="7-Zip"
-            data-category="windows tools"
-        >
-
-            <div class="program-top">
-
-                <div class="program-icon">
-                    📦
-                </div>
-
-
-                <div>
-
-                    <div class="program-name">
-                        7-Zip
-                    </div>
-
-
-                    <div class="program-version">
-                        Automatyczna wersja
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="program-description">
-                Popularny program do kompresowania i rozpakowywania plików.
-            </div>
-
-
-            <div class="program-footer">
-
-                <span class="platform">
-                    Windows x64
-                </span>
-
-
-                <span class="download">
-                    Pobierz →
-                </span>
-
-            </div>
-
-        </a>
-
-
-
-        <!-- =====================
-             VLC
-        ====================== -->
-
-        <a
-            href="programs/vlc.html"
-            class="program"
-            data-name="VLC Media Player"
-            data-category="windows linux tools"
-        >
-
-            <div class="program-top">
-
-                <div class="program-icon">
-                    🎬
-                </div>
-
-
-                <div>
-
-                    <div class="program-name">
-                        VLC Media Player
-                    </div>
-
-
-                    <div class="program-version">
-                        Automatyczna wersja
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="program-description">
-                Odtwarzacz multimedialny obsługujący wiele formatów.
-            </div>
-
-
-            <div class="program-footer">
-
-                <span class="platform">
-                    Windows / Linux
-                </span>
-
-
-                <span class="download">
-                    Pobierz →
-                </span>
-
-            </div>
-
-        </a>
-        <!-- MS-DOS -->
-
-<a
-    href="programs/msdos.html"
-    class="program"
-    data-name="MS-DOS"
-    data-category="windows iso"
->
-
-    <div class="program-top">
-
-        <div class="program-icon">
-            💾
-        </div>
-
-        <div>
-
-            <div class="program-name">
-                MS-DOS
-            </div>
-
-            <div class="program-version">
-                Klasyczny system DOS
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="program-description">
-        Klasyczny system operacyjny firmy Microsoft.
-    </div>
-
-
-    <div class="program-footer">
-
-        <span class="platform">
-            DOS
-        </span>
-
-
-        <span class="download">
-            Zobacz →
-        </span>
-
-    </div>
-
-</a>
-
-
-
-        <!-- =====================
-             GIMP
-        ====================== -->
-
-        <a
-            href="programs/gimp.html"
-            class="program"
-            data-name="GIMP"
-            data-category="windows linux tools"
-        >
-
-            <div class="program-top">
-
-                <div class="program-icon">
-                    🎨
-                </div>
-
-
-                <div>
-
-                    <div class="program-name">
-                        GIMP
-                    </div>
-
-
-                    <div class="program-version">
-                        Automatyczna wersja
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="program-description">
-                Darmowy edytor grafiki rastrowej.
-            </div>
-
-
-            <div class="program-footer">
-
-                <span class="platform">
-                    Windows / Linux
-                </span>
-
-
-                <span class="download">
-                    Pobierz →
-                </span>
-
-            </div>
-
-        </a>
-
-
-
-        <!-- =====================
-             UBUNTU
-        ====================== -->
-
-        <a
-            href="programs/ubuntu.html"
-            class="program"
-            data-name="Ubuntu"
-            data-category="linux iso"
-        >
-
-            <div class="program-top">
-
-                <div class="program-icon">
-                    🐧
-                </div>
-
-
-                <div>
-
-                    <div class="program-name">
-                        Ubuntu
-                    </div>
-
-
-                    <div class="program-version">
-                        Automatyczna wersja
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="program-description">
-                Popularna dystrybucja systemu Linux.
-            </div>
-
-
-            <div class="program-footer">
-
-                <span class="platform">
-                    Linux x64
-                </span>
-
-
-                <span class="download">
-                    Pobierz ISO →
-                </span>
-
-            </div>
-
-        </a>
-
-
-
-        <!-- =====================
-             WINDOWS
-        ====================== -->
-
-        <a
-            href="programs/windows.html"
-            class="program"
-            data-name="Windows"
-            data-category="windows iso"
-        >
-
-            <div class="program-top">
-
-                <div class="program-icon">
-                    🪟
-                </div>
-
-
-                <div>
-
-                    <div class="program-name">
-                        Windows
-                    </div>
-
-
-                    <div class="program-version">
-                        Windows 11
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="program-description">
-                System operacyjny Microsoft dla komputerów PC.
-            </div>
-
-
-            <div class="program-footer">
-
-                <span class="platform">
-                    Windows x64
-                </span>
-
-
-                <span class="download">
-                    Pobierz ISO →
-                </span>
-
-            </div>
-
-        </a>
-
-
-    </div>
-
-
-
-    <!-- =========================
-         NO RESULTS
-    ========================== -->
+    <!-- NO RESULTS -->
 
     <div
         id="noResults"
@@ -1000,46 +760,35 @@
 
     </div>
 
+
+
+    <!-- ERROR -->
+
+    <div
+        id="error"
+        class="error"
+    >
+
+        <h2>
+            Nie udało się pobrać katalogu
+        </h2>
+
+
+        <p>
+            Sprawdź, czy repozytorium
+            TechnoBkx-Data jest publiczne
+            oraz czy istnieje plik
+            programs.json.
+        </p>
+
+
+        <code>
+            TechnoBkx-Data/programs.json
+        </code>
+
+    </div>
+
 </main>
-
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section
-    id="o-projekcie"
-    style="
-        max-width:1100px;
-        margin:0 auto;
-        padding:0 20px 70px;
-        text-align:center;
-    "
->
-
-    <h2
-        style="
-            font-size:23px;
-            margin-bottom:12px;
-        "
-    >
-        O TechnoBkx
-    </h2>
-
-
-    <p
-        style="
-            color:#969daa;
-            font-size:14px;
-            line-height:1.6;
-        "
-    >
-        TechnoBkx to katalog programów, narzędzi
-        i systemów operacyjnych zebranych w jednym miejscu.
-    </p>
-
-</section>
 
 
 
@@ -1055,32 +804,369 @@
 
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
 <script>
+
+    /*
+     * =====================================================
+     * KONFIGURACJA
+     * =====================================================
+     *
+     * Repozytorium:
+     *
+     * https://github.com/Tech-Karol/TechnoBkx-Data
+     *
+     * Plik:
+     *
+     * programs.json
+     *
+     */
+
+
+    const DATA_URL =
+        "https://raw.githubusercontent.com/Tech-Karol/TechnoBkx-Data/main/programs.json";
+
+
+    /*
+     * =====================================================
+     * ELEMENTY
+     * =====================================================
+     */
 
     const searchInput =
         document.getElementById("search");
 
 
-    const programs =
-        document.querySelectorAll(".program");
+    const programGrid =
+        document.getElementById("programGrid");
 
 
     const categories =
         document.querySelectorAll(".category");
 
 
+    const loading =
+        document.getElementById("loading");
+
+
     const noResults =
         document.getElementById("noResults");
 
 
+    const errorBox =
+        document.getElementById("error");
+
+
+    /*
+     * =====================================================
+     * STAN
+     * =====================================================
+     */
+
+    let programs = [];
+
     let selectedCategory = "all";
 
 
-    function filterPrograms() {
+    /*
+     * =====================================================
+     * POBIERANIE JSON
+     * =====================================================
+     */
+
+    async function loadPrograms() {
+
+        try {
+
+            loading.style.display = "block";
+
+            errorBox.style.display = "none";
+
+
+            /*
+             * Cache Busting
+             *
+             * Dzięki temu przeglądarka nie powinna
+             * długo trzymać starego programs.json.
+             */
+
+            const url =
+                DATA_URL +
+                "?t=" +
+                Date.now();
+
+
+            const response =
+                await fetch(url, {
+                    cache: "no-store"
+                });
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "HTTP " + response.status
+                );
+
+            }
+
+
+            const data =
+                await response.json();
+
+
+            if (
+                !data ||
+                !Array.isArray(data.programs)
+            ) {
+
+                throw new Error(
+                    "Nieprawidłowa struktura JSON"
+                );
+
+            }
+
+
+            programs =
+                data.programs;
+
+
+            loading.style.display = "none";
+
+
+            renderPrograms();
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "TechnoBkx Data Error:",
+                error
+            );
+
+
+            loading.style.display = "none";
+
+            errorBox.style.display = "block";
+
+        }
+
+    }
+
+
+
+    /*
+     * =====================================================
+     * TWORZENIE KAFELKA
+     * =====================================================
+     */
+
+    function createProgramCard(program) {
+
+
+        const card =
+            document.createElement("a");
+
+
+        /*
+         * Jeśli program posiada page,
+         * otwieramy jego wizytówkę.
+         */
+
+        if (program.page) {
+
+            card.href =
+                program.page;
+
+        }
+
+        else if (program.download) {
+
+            card.href =
+                program.download;
+
+            card.target =
+                "_blank";
+
+            card.rel =
+                "noopener noreferrer";
+
+        }
+
+        else {
+
+            card.href =
+                "#";
+
+        }
+
+
+        card.className =
+            "program";
+
+
+        /*
+         * Nazwa programu
+         */
+
+        const top =
+            document.createElement("div");
+
+
+        top.className =
+            "program-top";
+
+
+        /*
+         * Ikona
+         */
+
+        const icon =
+            document.createElement("div");
+
+
+        icon.className =
+            "program-icon";
+
+
+        icon.textContent =
+            program.icon || "📦";
+
+
+        /*
+         * Informacje
+         */
+
+        const information =
+            document.createElement("div");
+
+
+        const name =
+            document.createElement("div");
+
+
+        name.className =
+            "program-name";
+
+
+        name.textContent =
+            program.name || "Nieznany program";
+
+
+        const version =
+            document.createElement("div");
+
+
+        version.className =
+            "program-version";
+
+
+        version.textContent =
+            program.version
+                ? "Wersja " + program.version
+                : "Wersja nieznana";
+
+
+        information.appendChild(name);
+
+        information.appendChild(version);
+
+
+        top.appendChild(icon);
+
+        top.appendChild(information);
+
+
+        /*
+         * Opis
+         */
+
+        const description =
+            document.createElement("div");
+
+
+        description.className =
+            "program-description";
+
+
+        description.textContent =
+            program.description ||
+            "Brak opisu.";
+
+
+        /*
+         * Stopka
+         */
+
+        const footer =
+            document.createElement("div");
+
+
+        footer.className =
+            "program-footer";
+
+
+        const platform =
+            document.createElement("span");
+
+
+        platform.className =
+            "platform";
+
+
+        platform.textContent =
+            program.platform ||
+            "Brak danych";
+
+
+        const download =
+            document.createElement("span");
+
+
+        download.className =
+            "download";
+
+
+        download.textContent =
+            program.page
+                ? "Zobacz →"
+                : "Pobierz →";
+
+
+        footer.appendChild(platform);
+
+        footer.appendChild(download);
+
+
+        /*
+         * Składamy kafelek
+         */
+
+        card.appendChild(top);
+
+        card.appendChild(description);
+
+        card.appendChild(footer);
+
+
+        return card;
+
+    }
+
+
+
+    /*
+     * =====================================================
+     * RENDEROWANIE
+     * =====================================================
+     */
+
+    function renderPrograms() {
+
+
+        programGrid.innerHTML =
+            "";
+
 
         const searchText =
             searchInput.value
@@ -1088,28 +1174,58 @@
                 .trim();
 
 
-        let visible = 0;
+        let visible =
+            0;
 
 
         programs.forEach(program => {
 
+
             const name =
-                program.dataset.name
-                    .toLowerCase();
+                String(
+                    program.name || ""
+                ).toLowerCase();
 
 
-            const programCategories =
-                program.dataset.category
-                    .toLowerCase();
+            const description =
+                String(
+                    program.description || ""
+                ).toLowerCase();
 
+
+            const platform =
+                String(
+                    program.platform || ""
+                ).toLowerCase();
+
+
+            const categories =
+                Array.isArray(program.category)
+                    ? program.category.map(
+                        item =>
+                            String(item).toLowerCase()
+                    )
+                    : [];
+
+
+            /*
+             * Wyszukiwanie
+             */
 
             const matchesSearch =
-                name.includes(searchText);
+                !searchText ||
+                name.includes(searchText) ||
+                description.includes(searchText) ||
+                platform.includes(searchText);
 
+
+            /*
+             * Kategoria
+             */
 
             const matchesCategory =
                 selectedCategory === "all" ||
-                programCategories.includes(
+                categories.includes(
                     selectedCategory
                 );
 
@@ -1119,13 +1235,14 @@
                 matchesCategory
             ) {
 
-                program.style.display = "";
+                const card =
+                    createProgramCard(program);
+
+
+                programGrid.appendChild(card);
+
 
                 visible++;
-
-            } else {
-
-                program.style.display = "none";
 
             }
 
@@ -1140,29 +1257,43 @@
     }
 
 
-    /* WYSZUKIWANIE */
+
+    /*
+     * =====================================================
+     * WYSZUKIWARKA
+     * =====================================================
+     */
 
     searchInput.addEventListener(
         "input",
-        filterPrograms
+        renderPrograms
     );
 
 
-    /* KATEGORIE */
+
+    /*
+     * =====================================================
+     * KATEGORIE
+     * =====================================================
+     */
 
     categories.forEach(category => {
+
 
         category.addEventListener(
             "click",
             () => {
 
-                categories.forEach(button => {
 
-                    button.classList.remove(
-                        "active"
-                    );
+                categories.forEach(
+                    button => {
 
-                });
+                        button.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
 
 
                 category.classList.add(
@@ -1174,7 +1305,7 @@
                     category.dataset.category;
 
 
-                filterPrograms();
+                renderPrograms();
 
             }
         );
@@ -1182,9 +1313,14 @@
     });
 
 
-    /* START */
 
-    filterPrograms();
+    /*
+     * =====================================================
+     * START
+     * =====================================================
+     */
+
+    loadPrograms();
 
 </script>
 

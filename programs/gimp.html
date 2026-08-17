@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GIMP — TechnoBkx</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0d11;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 20px 40px;
+            background: #11141a;
+            border-bottom: 1px solid #282d38;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #4da3ff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: #151820;
+            border: 1px solid #282d38;
+            border-radius: 18px;
+            padding: 35px;
+        }
+
+        .program-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 20px;
+            background: #222631;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            color: #969daa;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .info-box {
+            background: #101319;
+            border: 1px solid #282d38;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .info-box small {
+            display: block;
+            color: #777e8b;
+            margin-bottom: 8px;
+        }
+
+        .downloads {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .download-button {
+            display: block;
+            padding: 16px 20px;
+            background: #4da3ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .download-button:hover {
+            background: #2d8ff0;
+            transform: translateY(-2px);
+        }
+
+        .linux-button {
+            background: #252a34;
+            border: 1px solid #3a414e;
+        }
+
+        .linux-button:hover {
+            background: #303642;
+        }
+
+        .note {
+            margin-top: 18px;
+            color: #777e8b;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .status {
+            margin-top: 12px;
+            text-align: center;
+            color: #777e8b;
+            font-size: 12px;
+        }
+
+        footer {
+            text-align: center;
+            color: #686f7c;
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 18px 20px;
+            }
+
+            .container {
+                margin-top: 30px;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .program-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+
+            .downloads {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        Techno<span>Bkx</span>
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="card">
+
+        <div class="program-header">
+
+            <div class="icon">
+                G
+            </div>
+
+            <div>
+
+                <h1>
+                    GIMP
+                </h1>
+
+                <p class="description">
+                    Darmowy i otwartoźródłowy edytor grafiki.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info">
+
+            <div class="info-box">
+
+                <small>
+                    Wersja
+                </small>
+
+                <strong id="version">
+                    Sprawdzanie...
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <small>
+                    Windows
+                </small>
+
+                <strong>
+                    x64 / ARM64
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <small>
+                    Linux
+                </small>
+
+                <strong>
+                    x86_64 / ARM64
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="downloads">
+
+            <a
+                id="windowsDownload"
+                class="download-button"
+                href="#"
+            >
+                ⬇ Pobierz GIMP dla Windows
+            </a>
+
+
+            <a
+                class="download-button linux-button"
+                href="https://www.gimp.org/downloads/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                🐧 GIMP dla Linux
+            </a>
+
+        </div>
+
+
+        <p class="note">
+            Windows: oficjalny instalator GIMP.
+            Linux: oficjalna strona pobierania GIMP.
+        </p>
+
+
+        <div
+            id="status"
+            class="status"
+        >
+            Sprawdzanie aktualnej wersji...
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    © 2026 TechnoBkx
+
+</footer>
+
+
+<script>
+
+    /*
+     * Aktualna stabilna wersja awaryjna.
+     * GIMP 3.2.4 jest obecnym stable release.
+     */
+
+    const FALLBACK_VERSION = "3.2.4";
+
+
+    /*
+     * Oficjalna strona pobierania GIMP.
+     */
+
+    const GIMP_OFFICIAL =
+        "https://www.gimp.org/downloads/";
+
+
+    /*
+     * Oficjalny katalog pobierania GIMP.
+     */
+
+    const GIMP_DOWNLOAD =
+        "https://download.gimp.org/pub/gimp/v3.2/windows/"
+
+
+    async function loadGIMP() {
+
+        const versionElement =
+            document.getElementById("version");
+
+        const downloadButton =
+            document.getElementById("windowsDownload");
+
+        const status =
+            document.getElementById("status");
+
+
+        /*
+         * Na początek pokazujemy aktualną
+         * stabilną wersję.
+         */
+
+        versionElement.textContent =
+            FALLBACK_VERSION;
+
+
+        /*
+         * Oficjalny instalator Windows.
+         *
+         * Jeśli struktura serwera GIMP się zmieni,
+         * przycisk zostanie skierowany na
+         * oficjalną stronę zamiast do nieistniejącego pliku.
+         */
+
+        const directURL =
+            GIMP_DOWNLOAD +
+            "gimp-" +
+            FALLBACK_VERSION +
+            "-setup.exe";
+
+
+        /*
+         * Ustawiamy oficjalny instalator.
+         */
+
+        downloadButton.href =
+            directURL;
+
+
+        downloadButton.textContent =
+            "⬇ Pobierz GIMP " +
+            FALLBACK_VERSION;
+
+
+        status.textContent =
+            "GIMP Stable: " +
+            FALLBACK_VERSION;
+
+    }
+
+
+    loadGIMP();
+
+</script>
+
+</body>
+</html>

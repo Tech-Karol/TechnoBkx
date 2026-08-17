@@ -134,6 +134,7 @@
             text-align: center;
             padding: 40px;
             color: #ff6b6b;
+            display: none;
         }
 
         footer {
@@ -143,6 +144,7 @@
         }
 
         @media (max-width: 650px) {
+
             header {
                 padding: 18px 20px;
             }
@@ -170,9 +172,11 @@
 <body>
 
 <header>
+
     <div class="logo">
         Techno<span>Bkx</span>
     </div>
+
 </header>
 
 
@@ -180,9 +184,14 @@
 
     <div class="card">
 
+        <!-- ŁADOWANIE -->
+
         <div id="loading" class="loading">
-            Ładowanie informacji o Firefoxie...
+            Sprawdzanie aktualnej wersji Firefoxa...
         </div>
+
+
+        <!-- ZAWARTOŚĆ -->
 
         <div id="content" style="display: none;">
 
@@ -193,10 +202,15 @@
                 </div>
 
                 <div>
-                    <h1 id="name">Firefox</h1>
+
+                    <h1 id="name">
+                        Firefox
+                    </h1>
 
                     <p id="description" class="description">
+                        Szybka i prywatna przeglądarka internetowa.
                     </p>
+
                 </div>
 
             </div>
@@ -205,18 +219,41 @@
             <div class="info">
 
                 <div class="info-box">
-                    <small>Wersja</small>
-                    <strong id="version"></strong>
+
+                    <small>
+                        Wersja
+                    </small>
+
+                    <strong id="version">
+                        —
+                    </strong>
+
                 </div>
 
-                <div class="info-box">
-                    <small>System</small>
-                    <strong id="system"></strong>
-                </div>
 
                 <div class="info-box">
-                    <small>Format</small>
-                    <strong id="format"></strong>
+
+                    <small>
+                        System
+                    </small>
+
+                    <strong>
+                        Windows 64-bit
+                    </strong>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <small>
+                        Format
+                    </small>
+
+                    <strong>
+                        EXE
+                    </strong>
+
                 </div>
 
             </div>
@@ -233,7 +270,7 @@
                 </a>
 
                 <p class="note">
-                    Pobieranie odbywa się bezpośrednio z oficjalnego CDN Mozilli.
+                    Pobieranie odbywa się bezpośrednio z oficjalnego serwera Mozilli.
                 </p>
 
             </div>
@@ -241,8 +278,16 @@
         </div>
 
 
-        <div id="error" class="error" style="display: none;">
-            Nie udało się pobrać informacji o Firefoxie.
+        <!-- BŁĄD -->
+
+        <div id="error" class="error">
+
+            Nie udało się pobrać aktualnej wersji Firefoxa.
+
+            <br><br>
+
+            Sprawdź połączenie internetowe i spróbuj ponownie.
+
         </div>
 
     </div>
@@ -251,85 +296,151 @@
 
 
 <footer>
+
     © 2026 TechnoBkx
+
 </footer>
 
 
 <script>
 
-  const DATA_URL =
-    "https://raw.githubusercontent.com/Tech-Karol/TechnoBkx-Data/main/programs.json";
+    /*
+        Oficjalny feed Mozilli
+        zawierający informacje o wersjach Firefoxa.
+    */
+
+    const VERSION_API =
+        "https://product-details.mozilla.org/1.0/firefox_versions.json";
+
+
+    /*
+        Oficjalny mechanizm pobierania
+        najnowszego Firefoxa dla Windows 64-bit
+        w języku polskim.
+    */
+
+    const DOWNLOAD_URL =
+        "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=pl";
+
 
     async function loadFirefox() {
 
         try {
 
-            const response = await fetch(DATA_URL, {
-                cache: "no-store"
-            });
+            /*
+                Pobierz informacje o wersjach.
+            */
+
+            const response = await fetch(
+                VERSION_API,
+                {
+                    cache: "no-store"
+                }
+            );
+
 
             if (!response.ok) {
-                throw new Error("Nie udało się pobrać programs.json");
-            }
 
-            const data = await response.json();
+                throw new Error(
+                    "Nie udało się pobrać danych Mozilli."
+                );
 
-            const firefox = data.firefox;
-
-            if (!firefox) {
-                throw new Error("Brak danych Firefoxa");
             }
 
 
-            document.getElementById("name").textContent =
-                firefox.name;
+            /*
+                Zamień odpowiedź na JSON.
+            */
 
-            document.getElementById("description").textContent =
-                firefox.description;
-
-            document.getElementById("version").textContent =
-                firefox.version;
-
-            document.getElementById("system").textContent =
-                firefox.system;
-
-            document.getElementById("format").textContent =
-                firefox.format;
+            const data =
+                await response.json();
 
 
-            const download =
-                document.getElementById("download");
+            /*
+                Pobierz najnowszą wersję Stable.
+            */
 
-            download.href =
-                firefox.download;
-
-            download.textContent =
-                "⬇ Pobierz " +
-                firefox.name +
-                " " +
-                firefox.version;
+            const version =
+                data.LATEST_FIREFOX_VERSION;
 
 
-            document.getElementById("loading").style.display =
-                "none";
+            if (!version) {
 
-            document.getElementById("content").style.display =
-                "block";
+                throw new Error(
+                    "Mozilla nie zwróciła numeru wersji."
+                );
+
+            }
+
+
+            /*
+                Wstaw dane do strony.
+            */
+
+            document.getElementById(
+                "version"
+            ).textContent = version;
+
+
+            document.getElementById(
+                "download"
+            ).href = DOWNLOAD_URL;
+
+
+            document.getElementById(
+                "download"
+            ).textContent =
+                "⬇ Pobierz Firefox " + version;
+
+
+            /*
+                Ukryj komunikat ładowania.
+            */
+
+            document.getElementById(
+                "loading"
+            ).style.display = "none";
+
+
+            /*
+                Pokaż stronę programu.
+            */
+
+            document.getElementById(
+                "content"
+            ).style.display = "block";
+
 
         } catch (error) {
 
-            console.error(error);
+            /*
+                Pokaż błąd.
+            */
 
-            document.getElementById("loading").style.display =
-                "none";
+            console.error(
+                "TechnoBkx Firefox:",
+                error
+            );
 
-            document.getElementById("error").style.display =
-                "block";
+
+            document.getElementById(
+                "loading"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "error"
+            ).style.display = "block";
 
         }
 
     }
 
+
+    /*
+        Uruchom sprawdzanie
+        przy każdym wejściu na stronę.
+    */
 
     loadFirefox();
 
